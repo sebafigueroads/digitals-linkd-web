@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<title>LINKD para Empresas — Tarjetas NFC para equipos comerciales · Chile</title>
-<meta name="description" content="LINKD Empresas · tarjetas NFC corporativas para tu equipo comercial. Dashboard centralizado, branding consistente, update remoto, métricas reales de networking. Cotización a medida."/>
+<title>LINKD Empresas — Tarjetas NFC + Dashboard CRM para equipos comerciales · Chile</title>
+<meta name="description" content="LINKD Empresas · tarjetas NFC corporativas con dashboard analytics, branding consistente, métricas reales de networking, API CRM. Cotización en 24h."/>
 <link rel="canonical" href="https://linkd.cl/empresas/"/>
 <meta name="robots" content="index,follow,max-image-preview:large"/>
 
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="LINKD Empresas — Networking corporativo del futuro"/>
-<meta property="og:description" content="Tarjetas NFC corporativas con dashboard, métricas y branding consistente · update remoto · sin reimpresión"/>
+<meta property="og:description" content="Tarjetas NFC corporativas + dashboard analytics · update remoto · métricas reales · API CRM"/>
 <meta property="og:locale" content="es_CL"/>
 <meta property="og:image" content="../assets/logo/linkd-og.png"/>
 <link rel="icon" href="../assets/logo/linkd-logo-original.png" type="image/png"/>
@@ -28,7 +28,7 @@
   --bg: #08090C; --bg-2: #0F1116; --bg-3: #15181F; --bg-card: #0E1118;
   --ink: #F4F4F8; --ink-soft: #B4B4C0; --ink-mute: #6E707C; --ink-faint: #3C3E48;
   --line: rgba(244,244,248,0.08); --line-strong: rgba(244,244,248,0.18);
-  --blue: #0071E3; --blue-bright: #2997FF; --signal: #4DE38C; --gold: #F2C12B;
+  --blue: #0071E3; --blue-bright: #2997FF; --signal: #4DE38C; --gold: #F2C12B; --coral: #FF8866;
   --f-display: 'Inter Tight', system-ui, sans-serif;
   --f-body: 'Geist', 'Inter', system-ui, sans-serif;
   --f-serif: 'Instrument Serif', Georgia, serif;
@@ -43,7 +43,8 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-weight: 400; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+html, body { max-width: 100vw; overflow-x: hidden; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-weight: 400; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
 button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
@@ -83,110 +84,166 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .topbar-cta:hover { background: var(--blue-bright); transform: translateY(-1px); box-shadow: 0 12px 24px rgba(0,113,227,0.36); }
 @media (max-width: 980px) { .topbar-nav { display: none; } }
 
-/* === Hero empresas === */
-.empresas-hero { position: relative; padding: clamp(80px, 12vh, 140px) clamp(20px, 5vw, 60px) clamp(60px, 9vh, 100px); max-width: 1380px; margin: 0 auto; z-index: 3; }
-.eh-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: center; }
+/* === HERO Empresas · split card + dashboard mockup === */
+.eh { position: relative; padding: clamp(70px, 11vh, 140px) clamp(20px, 5vw, 60px) clamp(50px, 8vh, 80px); max-width: 1380px; margin: 0 auto; z-index: 3; }
+.eh-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(40px, 5vw, 80px); align-items: center; }
 @media (max-width: 980px) { .eh-grid { grid-template-columns: 1fr; gap: 50px; } }
 
-.eh-kicker { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; background: rgba(0,113,227,0.10); border: 1px solid rgba(0,113,227,0.32); font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--blue-bright); border-radius: 100px; margin-bottom: 28px; width: fit-content; backdrop-filter: blur(6px); }
-.eh-kicker::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--blue-bright); box-shadow: 0 0 10px var(--blue-bright); animation: ledBlink 1.6s infinite; }
-.empresas-hero h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.4rem, 6.5vw, 5rem); line-height: 0.95; letter-spacing: -0.035em; margin-bottom: 24px; }
-.empresas-hero h1 .italic { font-family: var(--f-serif); font-style: italic; font-weight: 400; color: var(--blue-bright); letter-spacing: -0.02em; }
-.empresas-hero h1 .em { color: var(--signal); }
-.empresas-hero .lede { font-size: 1.08rem; line-height: 1.6; color: var(--ink-soft); max-width: 50ch; margin-bottom: 36px; }
-.empresas-hero .lede strong { color: var(--ink); font-weight: 600; }
-.eh-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.eh-eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; background: rgba(0,113,227,0.10); border: 1px solid rgba(0,113,227,0.32); font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--blue-bright); border-radius: 100px; margin-bottom: 28px; width: fit-content; backdrop-filter: blur(6px); }
+.eh-eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--blue-bright); box-shadow: 0 0 10px var(--blue-bright); animation: ledBlink 1.6s infinite; }
+.eh h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.3rem, 6vw, 4.8rem); line-height: 0.94; letter-spacing: -0.035em; margin-bottom: 22px; }
+.eh h1 .italic { font-family: var(--f-serif); font-style: italic; font-weight: 400; color: var(--blue-bright); letter-spacing: -0.02em; }
+.eh h1 .em { color: var(--signal); }
+.eh .lede { font-size: 1.06rem; line-height: 1.6; color: var(--ink-soft); max-width: 50ch; margin-bottom: 32px; }
+.eh .lede strong { color: var(--ink); font-weight: 600; }
+.eh-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
 .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; background: var(--blue); color: #fff; font-family: var(--f-body); font-weight: 600; font-size: 14px; border-radius: 100px; transition: all 0.3s var(--ease); }
 .btn-primary:hover { background: var(--blue-bright); transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,113,227,0.45); }
 .btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; background: transparent; color: var(--ink); border: 1.5px solid var(--line-strong); font-family: var(--f-body); font-weight: 600; font-size: 14px; border-radius: 100px; transition: all 0.3s var(--ease); }
 .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
 
-.eh-media { position: relative; aspect-ratio: 4/5; max-width: 480px; margin: 0 auto; border-radius: 32px; overflow: hidden; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.6), 0 0 80px -20px rgba(0,113,227,0.30); }
-.eh-media img { width: 100%; height: 100%; object-fit: cover; }
-.eh-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 50%, rgba(0,113,227,0.16) 100%); pointer-events: none; }
-.eh-stats-floating { position: absolute; bottom: 20px; left: 20px; right: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-.eh-stat { padding: 12px 14px; background: rgba(8,9,12,0.84); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(244,244,248,0.10); border-radius: 12px; }
-.eh-stat .num { font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; line-height: 1; color: var(--blue-bright); letter-spacing: -0.022em; }
-.eh-stat .lbl { font-family: var(--f-body); font-size: 9.5px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); margin-top: 4px; line-height: 1.3; }
+.eh-trust { display: flex; gap: 22px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+.eh-trust-item { display: flex; align-items: center; gap: 8px; }
+.eh-trust-item .num { font-family: var(--f-display); font-weight: 700; font-size: 1.6rem; line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+.eh-trust-item .lbl { font-family: var(--f-body); font-size: 11px; font-weight: 500; color: var(--ink-soft); line-height: 1.3; max-width: 14ch; }
 
-/* === Marquee de clientes === */
-.client-strip { padding: 24px 0; background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; position: relative; z-index: 5; }
-.client-strip-track { display: flex; gap: clamp(40px, 6vw, 80px); align-items: center; animation: stripRoll 36s linear infinite; white-space: nowrap; }
-.client-strip-track .item { font-family: var(--f-display); font-weight: 600; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -0.01em; color: var(--ink-soft); display: inline-flex; align-items: center; gap: clamp(40px, 6vw, 80px); }
-.client-strip-track .item::after { content: '·'; color: var(--blue-bright); font-weight: 400; }
-@keyframes stripRoll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* === Hero Visual · STACK 3D = real card image + dashboard mockup detrás === */
+.eh-visual { position: relative; aspect-ratio: 1/1.05; max-width: 540px; margin: 0 auto; width: 100%; perspective: 1800px; }
 
-/* === Sección problemas === */
+/* Dashboard mockup detrás · floating */
+.eh-dash { position: absolute; top: 4%; right: 0; width: 78%; aspect-ratio: 1.4/1; background: var(--bg-card); border: 1px solid var(--line-strong); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; transform: rotate(4deg) translateZ(-30px); box-shadow: 0 50px 80px -30px rgba(0,0,0,0.6), 0 0 60px -20px rgba(0,113,227,0.30); z-index: 1; }
+.eh-dash-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.eh-dash-title { font-family: var(--f-display); font-weight: 700; font-size: 12px; letter-spacing: -0.01em; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.eh-dash-title::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 8px var(--signal); animation: ledBlink 1.6s infinite; }
+.eh-dash-time { font-family: var(--f-body); font-size: 9.5px; color: var(--ink-mute); font-weight: 500; }
+.eh-dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.eh-dash-kpi { padding: 10px 12px; background: var(--bg-3); border-radius: 8px; }
+[data-theme="light"] .eh-dash-kpi { background: #F0F1F4; }
+.eh-dash-kpi .lbl { font-family: var(--f-body); font-size: 8.5px; letter-spacing: 0.04em; color: var(--ink-mute); font-weight: 600; text-transform: uppercase; }
+.eh-dash-kpi .v { font-family: var(--f-display); font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 4px; letter-spacing: -0.022em; }
+.eh-dash-kpi .v .pct { font-size: 10px; color: var(--signal); margin-left: 4px; font-weight: 600; }
+.eh-dash-kpi.v2 .v { color: var(--blue-bright); }
+.eh-dash-kpi.v3 .v { color: var(--gold); }
+.eh-dash-kpi.v4 .v { color: var(--signal); }
+.eh-dash-chart { height: 50px; display: flex; align-items: flex-end; justify-content: space-between; gap: 4px; padding-top: 8px; border-top: 1px solid var(--line); }
+.eh-dash-chart .bar { width: 8%; background: linear-gradient(180deg, var(--blue-bright), var(--blue)); border-radius: 3px 3px 0 0; }
+.eh-dash-chart .bar:nth-child(1) { height: 40%; } .eh-dash-chart .bar:nth-child(2) { height: 60%; } .eh-dash-chart .bar:nth-child(3) { height: 48%; } .eh-dash-chart .bar:nth-child(4) { height: 78%; } .eh-dash-chart .bar:nth-child(5) { height: 65%; } .eh-dash-chart .bar:nth-child(6) { height: 88%; } .eh-dash-chart .bar:nth-child(7) { height: 72%; } .eh-dash-chart .bar:nth-child(8) { height: 95%; background: linear-gradient(180deg, var(--signal), var(--blue-bright)); }
+.eh-dash-chart .bar:nth-child(9) { height: 82%; } .eh-dash-chart .bar:nth-child(10) { height: 100%; background: linear-gradient(180deg, var(--gold), var(--signal)); }
+
+/* Card image · adelante con tilt */
+.eh-card { position: absolute; bottom: 0; left: 0; width: 64%; aspect-ratio: 841/1135; z-index: 3; transform: rotate(-5deg) translateZ(30px); filter: drop-shadow(0 35px 60px rgba(0,0,0,0.65)) drop-shadow(0 0 50px rgba(0,113,227,0.30)); animation: cardHover 5s ease-in-out infinite; }
+.eh-card img { width: 100%; height: 100%; object-fit: contain; }
+@keyframes cardHover { 50% { transform: rotate(-5deg) translateZ(30px) translateY(-12px); } }
+
+/* NFC ping ring */
+.eh-ping { position: absolute; top: 18%; left: 32%; width: 0; height: 0; z-index: 4; pointer-events: none; }
+.eh-ping span { position: absolute; left: 50%; top: 50%; width: 70px; height: 70px; margin: -35px 0 0 -35px; border: 2px solid var(--signal); border-radius: 50%; opacity: 0; animation: ehPing 2.5s ease-out infinite; }
+.eh-ping span:nth-child(2) { animation-delay: 0.4s; }
+.eh-ping span:nth-child(3) { animation-delay: 0.8s; }
+@keyframes ehPing { 0% { opacity: 1; transform: scale(0.3); } 100% { opacity: 0; transform: scale(2); } }
+
+@media (max-width: 980px) { .eh-visual { max-width: 480px; } }
+@media (max-width: 600px) { .eh-visual { aspect-ratio: 1/1; max-width: 400px; } .eh-dash { width: 72%; } .eh-card { width: 60%; } .eh-trust { gap: 16px; } .eh-trust-item .num { font-size: 1.4rem; } }
+@media (max-width: 480px) { .eh-trust-item { flex: 1 1 calc(50% - 8px); min-width: 0; } }
+
+/* === Section general === */
 .section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; }
 .section-inner { max-width: 1380px; margin: 0 auto; }
-.section-head { max-width: 760px; margin-bottom: 60px; }
+.section-head { max-width: 760px; margin-bottom: 56px; }
 .section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--blue-bright); margin-bottom: 18px; padding: 5px 14px; background: rgba(0,113,227,0.10); border: 1px solid rgba(0,113,227,0.32); border-radius: 100px; }
-.section h2 { font-family: var(--f-display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1; letter-spacing: -0.03em; margin-bottom: 20px; }
+.section h2 { font-family: var(--f-display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1; letter-spacing: -0.03em; margin-bottom: 20px; }
 .section h2 .italic { font-family: var(--f-serif); font-style: italic; font-weight: 400; color: var(--blue-bright); }
 .section h2 .em { color: var(--signal); }
 .section .lede { font-size: 1.06rem; line-height: 1.6; color: var(--ink-soft); max-width: 60ch; }
 .section .lede strong { color: var(--ink); font-weight: 600; }
 
-.problems-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-@media (max-width: 980px) { .problems-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 540px) { .problems-grid { grid-template-columns: 1fr; } }
-.problem-card { padding: 32px 26px 28px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 18px; transition: all 0.35s var(--ease); }
-.problem-card:hover { transform: translateY(-4px); border-color: rgba(255,80,80,0.35); box-shadow: 0 22px 50px -16px rgba(255,80,80,0.18); }
-.problem-ico { width: 46px; height: 46px; background: rgba(255,90,90,0.10); border-radius: 12px; display: grid; place-items: center; color: #FF6B6B; margin-bottom: 18px; }
-.problem-ico svg { width: 22px; height: 22px; stroke-width: 1.8; }
-.problem-card h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.015em; margin-bottom: 8px; }
-.problem-card p { font-size: 0.92rem; line-height: 1.55; color: var(--ink-soft); }
+/* === COMPARATIVA · papel vs LINKD === */
+.compare-section { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; position: relative; }
+@media (max-width: 760px) { .compare-grid { grid-template-columns: 1fr; gap: 14px; } }
+.compare-grid::before { content: 'VS'; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 56px; height: 56px; background: var(--bg-card); border: 1.5px solid var(--blue-bright); color: var(--blue-bright); display: grid; place-items: center; font-family: var(--f-display); font-weight: 800; font-size: 16px; border-radius: 50%; box-shadow: 0 12px 28px rgba(0,113,227,0.25); z-index: 5; letter-spacing: -0.01em; }
+@media (max-width: 760px) { .compare-grid::before { left: 50%; top: 50%; } }
+.compare-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 22px; padding: 36px 32px; position: relative; }
+.compare-card.bad { border-color: rgba(255,80,80,0.20); }
+.compare-card.good { border-color: rgba(77,227,140,0.32); background: linear-gradient(165deg, var(--bg-card) 0%, rgba(77,227,140,0.06) 100%); }
+.compare-tag { display: inline-block; padding: 5px 12px; font-family: var(--f-body); font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+.compare-card.bad .compare-tag { background: rgba(255,80,80,0.10); color: #FF6B6B; border: 1px solid rgba(255,80,80,0.30); }
+.compare-card.good .compare-tag { background: rgba(77,227,140,0.12); color: var(--signal); border: 1px solid rgba(77,227,140,0.40); }
+.compare-card h3 { font-family: var(--f-display); font-weight: 700; font-size: 1.45rem; letter-spacing: -0.022em; margin-bottom: 18px; }
+.compare-card ul { list-style: none; display: grid; gap: 12px; }
+.compare-card li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; line-height: 1.5; color: var(--ink-soft); }
+.compare-card li .ico { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; }
+.compare-card.bad li .ico { background: rgba(255,80,80,0.12); color: #FF6B6B; }
+.compare-card.good li .ico { background: rgba(77,227,140,0.14); color: var(--signal); }
+.compare-card li .ico svg { width: 12px; height: 12px; stroke-width: 2.5; }
 
-/* === Solución === */
-.solution-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 5; }
-.sol-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(40px, 6vw, 80px); align-items: center; }
-@media (max-width: 980px) { .sol-grid { grid-template-columns: 1fr; gap: 50px; } }
-.sol-media { position: relative; aspect-ratio: 4/3; border-radius: 24px; overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.55); }
-.sol-media img { width: 100%; height: 100%; object-fit: cover; }
-.sol-list { list-style: none; margin-top: 32px; display: grid; gap: 16px; }
-.sol-list li { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; transition: all 0.3s var(--ease); }
-.sol-list li:hover { border-color: rgba(0,113,227,0.45); transform: translateX(4px); }
-.sol-list .num { width: 32px; height: 32px; background: var(--blue); color: #fff; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; font-size: 13px; flex-shrink: 0; }
-.sol-list strong { display: block; font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.012em; color: var(--ink); margin-bottom: 3px; }
-.sol-list span { font-size: 0.92rem; line-height: 1.5; color: var(--ink-soft); }
+/* === FLUJO · 3 pasos visualizados === */
+.flow-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; }
+.flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; position: relative; margin-top: 50px; }
+@media (max-width: 880px) { .flow-grid { grid-template-columns: 1fr; gap: 14px; } }
+.flow-step { padding: 32px 28px 26px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 22px; position: relative; transition: all 0.4s var(--ease); }
+.flow-step:hover { transform: translateY(-6px); border-color: rgba(0,113,227,0.45); box-shadow: 0 26px 60px -18px rgba(0,113,227,0.30); }
+.flow-step .step { position: absolute; top: -16px; left: 26px; padding: 4px 12px; background: var(--blue); color: #fff; font-family: var(--f-body); font-weight: 700; font-size: 10.5px; letter-spacing: 0.06em; border-radius: 100px; text-transform: uppercase; }
+.flow-step .visual { aspect-ratio: 16/10; border-radius: 14px; background: var(--bg-3); overflow: hidden; margin-bottom: 22px; position: relative; display: grid; place-items: center; padding: 14px; }
+[data-theme="light"] .flow-step .visual { background: #F0F1F4; }
+.flow-step .visual img { width: 100%; height: 100%; object-fit: contain; }
+.flow-step h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.25rem; line-height: 1.15; letter-spacing: -0.018em; margin-bottom: 10px; }
+.flow-step p { font-size: 0.92rem; line-height: 1.55; color: var(--ink-soft); }
+.flow-arrow { display: none; }
+@media (min-width: 881px) { .flow-step + .flow-step::before { content: '→'; position: absolute; left: -12px; top: 50%; transform: translate(-50%,-50%); color: var(--blue-bright); font-size: 20px; font-weight: 400; z-index: 2; background: var(--bg); padding: 0 6px; } }
 
-/* === Casos de uso === */
-.cases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 50px; }
-@media (max-width: 1100px) { .cases-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 540px) { .cases-grid { grid-template-columns: 1fr; } }
-.case-card { padding: 32px 28px 28px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 20px; transition: all 0.35s var(--ease); position: relative; overflow: hidden; }
-.case-card:hover { transform: translateY(-6px); border-color: rgba(0,113,227,0.45); box-shadow: 0 26px 60px -18px rgba(0,113,227,0.30); }
-.case-card::before { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle, rgba(0,113,227,0.20), transparent 70%); border-radius: 0 0 0 80px; opacity: 0; transition: opacity 0.4s; }
-.case-card:hover::before { opacity: 1; }
-.case-ico { width: 50px; height: 50px; background: rgba(0,113,227,0.10); border-radius: 14px; display: grid; place-items: center; color: var(--blue-bright); margin-bottom: 20px; transition: all 0.35s var(--ease); }
-.case-card:hover .case-ico { background: var(--blue); color: #fff; transform: rotate(-6deg) scale(1.05); }
-.case-ico svg { width: 24px; height: 24px; stroke-width: 1.8; }
-.case-card h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.18rem; letter-spacing: -0.018em; margin-bottom: 10px; }
-.case-card p { font-size: 0.92rem; line-height: 1.55; color: var(--ink-soft); }
+/* === ROI Calculator interactive === */
+.roi-calc { background: linear-gradient(170deg, var(--bg-2) 0%, var(--bg) 100%); border-top: 1px solid var(--line); }
+.roi-calc-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(36px, 5vw, 70px); align-items: center; max-width: 1180px; margin: 0 auto; }
+@media (max-width: 880px) { .roi-calc-grid { grid-template-columns: 1fr; gap: 40px; } }
+.roi-controls { display: flex; flex-direction: column; gap: 18px; }
+.roi-input { display: flex; flex-direction: column; gap: 6px; padding: 18px 22px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; }
+.roi-input label { font-family: var(--f-body); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-mute); text-transform: uppercase; }
+.roi-input .value { font-family: var(--f-display); font-weight: 700; font-size: 1.6rem; letter-spacing: -0.025em; color: var(--ink); padding-block: 0.06em; }
+.roi-input input[type="range"] { -webkit-appearance: none; width: 100%; height: 4px; background: var(--bg-3); border-radius: 100px; outline: 0; margin-top: 8px; }
+[data-theme="light"] .roi-input input[type="range"] { background: #E2E4EA; }
+.roi-input input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--blue); cursor: pointer; box-shadow: 0 4px 12px rgba(0,113,227,0.40); border: 3px solid var(--bg); transition: transform 0.2s; }
+.roi-input input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.2); }
+.roi-input input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--blue); cursor: pointer; border: 3px solid var(--bg); }
+.roi-result { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 60%, var(--signal) 100%); border-radius: 22px; padding: clamp(28px, 4vw, 44px); color: #fff; position: relative; overflow: hidden; }
+.roi-result::before { content: ''; position: absolute; top: -40%; right: -10%; width: 380px; height: 380px; background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%); border-radius: 50%; }
+.roi-result-eye { display: inline-block; font-family: var(--f-body); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: rgba(255,255,255,0.85); margin-bottom: 14px; text-transform: uppercase; position: relative; }
+.roi-result-num { font-family: var(--f-display); font-weight: 800; font-size: clamp(3rem, 7vw, 5rem); line-height: 0.92; letter-spacing: -0.035em; padding-block: 0.04em; position: relative; }
+.roi-result-num .cur { font-size: 0.4em; font-weight: 600; margin-right: 4px; opacity: 0.85; }
+.roi-result-lbl { font-family: var(--f-body); font-size: 1rem; color: rgba(255,255,255,0.92); margin-top: 12px; max-width: 32ch; line-height: 1.45; position: relative; }
+.roi-result-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.20); position: relative; }
+.roi-detail-item { font-family: var(--f-body); }
+.roi-detail-item .v { font-family: var(--f-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.018em; line-height: 1; }
+.roi-detail-item .l { font-size: 10px; letter-spacing: 0.04em; color: rgba(255,255,255,0.85); margin-top: 4px; text-transform: uppercase; font-weight: 600; }
 
-/* === ROI · KPIs === */
-.roi-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); background: linear-gradient(170deg, var(--bg-2) 0%, var(--bg) 100%); border-top: 1px solid var(--line); position: relative; z-index: 5; }
-.roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 50px; }
-@media (max-width: 760px) { .roi-grid { grid-template-columns: 1fr; } }
-.roi-card { padding: 40px 32px 36px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 22px; text-align: center; position: relative; overflow: hidden; transition: all 0.4s var(--ease); }
-.roi-card:hover { border-color: rgba(77,227,140,0.45); transform: translateY(-6px); box-shadow: 0 26px 60px -18px rgba(77,227,140,0.30); }
-.roi-card .num { font-family: var(--f-display); font-weight: 800; font-size: clamp(3.2rem, 7vw, 5rem); line-height: 0.95; letter-spacing: -0.03em; color: var(--signal); padding-block: 0.06em; }
-.roi-card .num small { font-family: var(--f-body); font-weight: 600; font-size: 0.36em; color: var(--ink-mute); letter-spacing: 0.02em; margin-left: 4px; }
-.roi-card h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.012em; margin-top: 12px; }
-.roi-card p { font-size: 0.88rem; line-height: 1.55; color: var(--ink-soft); margin-top: 6px; }
+/* === CASOS innovative · cards 3D con foto real === */
+.cases-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; }
+.cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 50px; }
+@media (max-width: 760px) { .cases-grid { grid-template-columns: 1fr; } }
+.case-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; transition: all 0.4s var(--ease); position: relative; display: grid; grid-template-columns: 0.45fr 1fr; gap: 0; }
+.case-card:hover { transform: translateY(-4px); border-color: rgba(0,113,227,0.45); box-shadow: 0 28px 60px -18px rgba(0,113,227,0.30); }
+.case-visual { aspect-ratio: 1/1; background: linear-gradient(135deg, var(--bg-3), var(--bg-2)); padding: 22px; display: grid; place-items: center; border-right: 1px solid var(--line); }
+.case-visual img { width: 100%; height: 100%; object-fit: contain; }
+.case-body { padding: 28px 26px; display: flex; flex-direction: column; justify-content: center; }
+.case-tag { display: inline-block; padding: 4px 11px; background: rgba(0,113,227,0.10); border: 1px solid rgba(0,113,227,0.32); color: var(--blue-bright); font-family: var(--f-body); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; width: fit-content; margin-bottom: 14px; }
+.case-card h4 { font-family: var(--f-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.022em; line-height: 1.15; margin-bottom: 10px; }
+.case-card p { font-size: 0.95rem; line-height: 1.55; color: var(--ink-soft); }
+@media (max-width: 480px) { .case-card { grid-template-columns: 1fr; } .case-visual { aspect-ratio: 16/9; border-right: 0; border-bottom: 1px solid var(--line); } }
 
-/* === Testimonio empresa === */
-.testimonial-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; }
-.testimonial-inner { max-width: 1100px; margin: 0 auto; padding: 50px clamp(28px, 5vw, 60px); background: var(--bg-card); border: 1px solid var(--line); border-radius: 28px; position: relative; overflow: hidden; }
-.testimonial-inner::before { content: '"'; position: absolute; top: -40px; left: 20px; font-family: var(--f-serif); font-size: 14rem; line-height: 1; color: var(--blue); opacity: 0.18; }
-.testimonial-inner blockquote { font-family: var(--f-serif); font-style: italic; font-weight: 400; font-size: clamp(1.4rem, 2.6vw, 2.1rem); line-height: 1.35; letter-spacing: -0.005em; color: var(--ink); margin-bottom: 26px; position: relative; z-index: 2; }
-.testimonial-author { display: flex; gap: 16px; align-items: center; position: relative; z-index: 2; }
-.testimonial-author-photo { width: 56px; height: 56px; border-radius: 50%; background: var(--bg-3); display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; color: var(--ink); font-size: 18px; overflow: hidden; flex-shrink: 0; border: 2px solid var(--blue-bright); }
-.testimonial-author-photo img { width: 100%; height: 100%; object-fit: cover; }
-.testimonial-author-name { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; }
-.testimonial-author-role { font-family: var(--f-body); font-size: 13px; color: var(--ink-soft); }
+/* === TIMELINE deploy === */
+.tl-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 5; }
+.tl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 50px; position: relative; }
+@media (max-width: 880px) { .tl-grid { grid-template-columns: 1fr 1fr; gap: 14px; } }
+@media (max-width: 540px) { .tl-grid { grid-template-columns: 1fr; } }
+.tl-step { padding: 26px 24px 22px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 18px; position: relative; transition: all 0.35s var(--ease); }
+.tl-step:hover { transform: translateY(-4px); border-color: rgba(0,113,227,0.45); }
+.tl-step .day { font-family: var(--f-display); font-weight: 800; font-size: 0.92rem; letter-spacing: -0.005em; color: var(--blue-bright); margin-bottom: 6px; }
+.tl-step h5 { font-family: var(--f-display); font-weight: 700; font-size: 1.12rem; letter-spacing: -0.018em; margin-bottom: 8px; }
+.tl-step p { font-size: 0.88rem; line-height: 1.55; color: var(--ink-soft); }
+.tl-step .ico { width: 38px; height: 38px; background: rgba(0,113,227,0.10); border-radius: 10px; display: grid; place-items: center; color: var(--blue-bright); margin-bottom: 16px; }
+.tl-step .ico svg { width: 18px; height: 18px; stroke-width: 1.8; }
 
-/* === CTA final === */
+/* === CTA FINAL === */
 .cta-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; }
 .cta-card { max-width: 1180px; margin: 0 auto; padding: clamp(48px, 6vw, 80px); background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 60%, var(--signal) 100%); border-radius: 32px; position: relative; overflow: hidden; color: #fff; }
 .cta-card::before { content: ''; position: absolute; top: -40%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%); border-radius: 50%; }
@@ -199,7 +256,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .cta-btn-ghost { padding: 16px 32px; background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.45); font-family: var(--f-body); font-weight: 600; font-size: 14px; border-radius: 100px; transition: all 0.3s var(--ease); }
 .cta-btn-ghost:hover { background: rgba(255,255,255,0.10); border-color: #fff; transform: translateY(-2px); }
 
-/* === Footer (shared) === */
+/* === Footer === */
 .foot { padding: clamp(60px, 9vh, 100px) clamp(20px, 5vw, 60px) 32px; background: var(--bg-2); border-top: 1px solid var(--line); position: relative; z-index: 5; }
 .foot-grid { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.1fr; gap: 36px; }
 @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
@@ -220,36 +277,31 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .foot-bottom { max-width: 1380px; margin: 28px auto 0; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--f-body); font-size: 12.5px; font-weight: 500; color: var(--ink-mute); }
 .foot-bottom a { color: var(--blue-bright); font-weight: 600; }
 
-/* WhatsApp widget */
 .wa-widget { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 58px; height: 58px; background: #25D366; display: grid; place-items: center; border-radius: 50%; box-shadow: 0 14px 32px rgba(37,211,102,0.4); transition: transform 0.25s ease; animation: waPulse 2.4s infinite; }
 .wa-widget:hover { transform: scale(1.08); }
 .wa-widget svg { width: 30px; height: 30px; fill: #fff; }
 @keyframes waPulse { 0%, 100% { box-shadow: 0 14px 32px rgba(37,211,102,0.4); } 50% { box-shadow: 0 14px 32px rgba(37,211,102,0.4), 0 0 0 16px rgba(37,211,102,0); } }
 
-/* Mobile responsive */
+/* === Mobile responsive === */
 @media (max-width: 760px) {
-  .empresas-hero { padding-top: 60px; padding-bottom: 50px; }
-  .empresas-hero h1 { font-size: clamp(2.1rem, 9vw, 2.8rem); letter-spacing: -0.025em; line-height: 1.02; }
-  .empresas-hero .lede { font-size: 0.96rem; }
+  .eh { padding-top: 60px; padding-bottom: 40px; }
+  .eh h1 { font-size: clamp(2.1rem, 8vw, 2.6rem); letter-spacing: -0.025em; line-height: 1.02; }
+  .eh .lede { font-size: 0.96rem; }
   .eh-actions .btn-primary, .eh-actions .btn-ghost { width: 100%; justify-content: center; }
   .section { padding: 60px 20px; }
   .section h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
   .section-head { margin-bottom: 36px; }
-  .problem-card, .case-card { padding: 22px 18px 20px; }
-  .sol-list li { padding: 14px 16px; }
-  .roi-card { padding: 28px 22px 22px; }
-  .testimonial-inner { padding: 36px 24px; }
-  .cta-card { padding: 36px 26px; border-radius: 22px; }
+  .compare-card { padding: 28px 22px; }
+  .compare-card h3 { font-size: 1.2rem; }
+  .flow-step { padding: 24px 20px; }
+  .roi-input { padding: 14px 16px; }
+  .roi-result { padding: 32px 24px; }
+  .case-body { padding: 22px 18px; }
+  .tl-step { padding: 22px 18px; }
+  .cta-card { padding: 36px 24px; border-radius: 22px; }
   .cta-btn-primary, .cta-btn-ghost { width: 100%; justify-content: center; text-align: center; }
   .foot { padding: 50px 20px 28px; }
 }
-@media (max-width: 480px) {
-  .empresas-hero { padding-top: 40px; }
-  .eh-stats-floating { grid-template-columns: 1fr 1fr; }
-  .eh-stat .num { font-size: 1.25rem; }
-}
-
-html, body { max-width: 100vw; overflow-x: hidden; }
 </style>
 </head>
 <body>
@@ -258,10 +310,10 @@ html, body { max-width: 100vw; overflow-x: hidden; }
 <div class="bg-orb-green"></div>
 
 <div class="status-bar">
-  <span><span class="led"></span>LINKD Empresas · networking corporativo del futuro</span>
+  <span><span class="led"></span>LINKD Empresas · dashboard activo · 50+ equipos en Chile</span>
   <div class="right">
-    <span>Dashboard · CRM · API</span>
-    <span>Cotización a medida</span>
+    <span>Cotización en 24h</span>
+    <span>Despacho nacional</span>
   </div>
 </div>
 
@@ -287,174 +339,247 @@ html, body { max-width: 100vw; overflow-x: hidden; }
   </div>
 </header>
 
-<!-- HERO -->
-<section class="empresas-hero">
+<!-- HERO · card real + dashboard mockup detrás -->
+<section class="eh">
   <div class="eh-grid">
     <div>
-      <span class="eh-kicker">LINKD Empresas · 50+ equipos en Chile</span>
-      <h1>Networking <span class="italic">corporativo</span> del futuro <span class="em">a un tap.</span></h1>
-      <p class="lede">Equipa a todo tu equipo comercial con tarjetas NFC inteligentes — <strong>branding consistente</strong>, <strong>update remoto</strong>, <strong>métricas reales</strong>. Sin reimprimir, sin perder leads, sin papel.</p>
+      <span class="eh-eyebrow">LINKD Empresas · 50+ equipos en Chile</span>
+      <h1>Networking <span class="italic">corporativo</span> con <span class="em">dashboard real.</span></h1>
+      <p class="lede">Equipa a todo tu equipo comercial con tarjetas NFC inteligentes — <strong>branding consistente</strong>, <strong>update remoto desde un panel</strong>, <strong>métricas reales</strong> de taps y leads. Sin reimprimir, sin perder oportunidades, sin papel.</p>
       <div class="eh-actions">
-        <a href="https://wa.me/56974850692?text=Hola%20LINKD%2C%20quiero%20cotizar%20para%20mi%20empresa" target="_blank" rel="noopener" class="btn-primary">Cotizar para mi empresa →</a>
-        <a href="#casos" class="btn-ghost">Ver casos</a>
+        <a href="https://wa.me/56974850692?text=Hola%20LINKD%2C%20quiero%20cotizar%20para%20mi%20empresa" target="_blank" rel="noopener" class="btn-primary">Cotizar para mi equipo →</a>
+        <a href="#flujo" class="btn-ghost">Ver cómo funciona</a>
+      </div>
+      <div class="eh-trust">
+        <div class="eh-trust-item"><div class="num">50+</div><div class="lbl">Equipos en Chile usando LINKD</div></div>
+        <div class="eh-trust-item"><div class="num">3.5×</div><div class="lbl">Contactos efectivos por evento</div></div>
+        <div class="eh-trust-item"><div class="num">85%</div><div class="lbl">Reducción costos impresión</div></div>
       </div>
     </div>
-    <div class="eh-media">
-      <img src="../assets/hf/card-empresa.png" alt="LINKD para empresas · tarjeta corporativa NFC con branding personalizado"/>
-      <div class="eh-stats-floating">
-        <div class="eh-stat">
-          <div class="num">85<small>%</small></div>
-          <div class="lbl">Reducción costos<br/>de impresión</div>
+
+    <!-- Hero visual: card image + dashboard mockup detrás -->
+    <div class="eh-visual">
+      <!-- Dashboard mockup detrás · floating arriba derecha -->
+      <div class="eh-dash" aria-hidden="true">
+        <div class="eh-dash-head">
+          <div class="eh-dash-title">LINKD Dashboard</div>
+          <div class="eh-dash-time">Live · hoy</div>
         </div>
-        <div class="eh-stat">
-          <div class="num">3.5<small>×</small></div>
-          <div class="lbl">Contactos efectivos<br/>por evento</div>
+        <div class="eh-dash-grid">
+          <div class="eh-dash-kpi"><div class="lbl">Taps semana</div><div class="v">2.847<span class="pct">+18%</span></div></div>
+          <div class="eh-dash-kpi v2"><div class="lbl">Leads CRM</div><div class="v">412<span class="pct">+24%</span></div></div>
+          <div class="eh-dash-kpi v3"><div class="lbl">Tarjetas</div><div class="v">68 activas</div></div>
+          <div class="eh-dash-kpi v4"><div class="lbl">Conversión</div><div class="v">14.5%<span class="pct">+3pts</span></div></div>
         </div>
-        <div class="eh-stat">
-          <div class="num">2.4<small>×</small></div>
-          <div class="lbl">Conversión<br/>de leads</div>
+        <div class="eh-dash-chart" aria-hidden="true">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </div>
       </div>
+
+      <!-- Card real PNG en primer plano -->
+      <div class="eh-card">
+        <img src="../assets/hf/card-empresa.png" alt="Tarjeta LINKD corporativa con branding personalizado"/>
+      </div>
+
+      <!-- NFC ping en el punto de tap -->
+      <div class="eh-ping" aria-hidden="true"><span></span><span></span><span></span></div>
     </div>
   </div>
 </section>
 
-<!-- Clients strip -->
-<div class="client-strip" aria-label="Clientes corporativos">
-  <div class="client-strip-track">
-    <span class="item">Cirumed</span><span class="item">Flamamed</span><span class="item">Khipu</span><span class="item">Mercosur</span><span class="item">Academia</span><span class="item">America Travel</span><span class="item">Digitals</span>
-    <span class="item">Cirumed</span><span class="item">Flamamed</span><span class="item">Khipu</span><span class="item">Mercosur</span><span class="item">Academia</span><span class="item">America Travel</span><span class="item">Digitals</span>
-  </div>
-</div>
-
-<!-- PROBLEMAS -->
-<section class="section">
+<!-- COMPARATIVA: papel vs LINKD -->
+<section class="section compare-section">
   <div class="section-inner">
-    <div class="section-head">
-      <span class="section-eyebrow">El problema</span>
-      <h2>¿Tu empresa aún lucha con <span class="italic">estos problemas?</span></h2>
-      <p class="lede">Miles de empresas siguen perdiendo oportunidades por métodos de networking obsoletos.</p>
+    <div class="section-head" style="margin-left: auto; margin-right: auto; text-align: center;">
+      <span class="section-eyebrow" style="margin-left: auto; margin-right: auto;">El cambio</span>
+      <h2 style="margin-left: auto; margin-right: auto;">Tarjeta de papel vs <span class="em">LINKD Empresas</span></h2>
+      <p class="lede" style="margin-left: auto; margin-right: auto;">El mismo costo de 3 meses de impresión te da una solución que dura toda la carrera de tu equipo.</p>
     </div>
-    <div class="problems-grid">
-      <article class="problem-card">
-        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h4>Costos recurrentes</h4>
-        <p>Miles de pesos mensuales en impresión de tarjetas que se quedan obsoletas en semanas.</p>
-      </article>
-      <article class="problem-card">
-        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h4>Información desactualizada</h4>
-        <p>Cambios de personal o de contacto hacen que las tarjetas impresas sean inútiles.</p>
-      </article>
-      <article class="problem-card">
-        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a9 9 0 0 1 9-9 9 9 0 0 1 9 9v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3v-3a3 3 0 0 1 3-3"/><path d="M21 9a3 3 0 0 1-3 3"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h4>Inconsistencia de marca</h4>
-        <p>Cada colaborador diseña sus propias tarjetas, diluyendo la identidad corporativa.</p>
-      </article>
-      <article class="problem-card">
-        <div class="problem-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h4>Sin métricas</h4>
-        <p>Imposible medir el ROI del networking o el desempeño del equipo comercial en eventos.</p>
-      </article>
-    </div>
-  </div>
-</section>
 
-<!-- SOLUCIÓN -->
-<section class="solution-section">
-  <div class="section-inner">
-    <div class="sol-grid">
-      <div class="sol-media">
-        <img src="../assets/hf/celulares-3.png" alt="Dashboard LINKD Empresas · gestión centralizada de tarjetas y métricas"/>
-      </div>
-      <div>
-        <span class="section-eyebrow">La solución</span>
-        <h2>La solución <span class="italic">digital</span> que tu empresa necesita.</h2>
-        <p class="lede">Una plataforma centralizada para gestionar a todo tu equipo con un dashboard único, métricas reales y branding consistente.</p>
-        <ul class="sol-list">
-          <li><span class="num">1</span><div><strong>Dashboard centralizado</strong><span>Administra a todo el equipo desde un solo panel · roles, permisos y visibilidad.</span></div></li>
-          <li><span class="num">2</span><div><strong>Branding corporativo consistente</strong><span>Plantilla aprobada por marketing · todas las tarjetas con la misma identidad.</span></div></li>
-          <li><span class="num">3</span><div><strong>Update instantáneo</strong><span>Cambia un cargo, número o redes y la tarjeta entrega la versión nueva sin reimprimir.</span></div></li>
-          <li><span class="num">4</span><div><strong>Reportes detallados</strong><span>Métricas de taps, leads capturados y desempeño por vendedor o evento.</span></div></li>
+    <div class="compare-grid">
+      <article class="compare-card bad">
+        <span class="compare-tag">Tarjeta de papel</span>
+        <h3>Lo que pasa hoy</h3>
+        <ul>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span>Cada cambio de cargo, número o redes obliga a reimprimir todo el equipo.</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span>Cada vendedor diseña su propia tarjeta — la marca se diluye.</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span>Imposible saber cuántos contactos generó el equipo en un evento.</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span>50% de las tarjetas se pierden o se botan dentro de 7 días.</span></li>
         </ul>
-      </div>
+      </article>
+
+      <article class="compare-card good">
+        <span class="compare-tag">LINKD Empresas</span>
+        <h3>Lo que cambia con NFC</h3>
+        <ul>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Update remoto desde el dashboard · cambios instantáneos para todo el equipo.</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Plantilla corporativa aprobada por marketing · todas las tarjetas idénticas.</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Cada tap deja registro · sabes quién, cuándo y cuántos leads capturó.</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>El receptor guarda el contacto directo en su teléfono · sin app.</span></li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- CASOS DE USO -->
-<section class="section" id="casos">
+<!-- FLUJO · 3 pasos del proceso B2B -->
+<section class="flow-section" id="flujo">
   <div class="section-inner">
     <div class="section-head">
-      <span class="section-eyebrow">Casos empresariales</span>
-      <h2>Cómo diferentes equipos <span class="italic">aprovechan</span> NFC.</h2>
-      <p class="lede">Cada área de tu empresa puede convertir networking en pipeline · sin papel, sin app, sin fricción.</p>
+      <span class="section-eyebrow">Cómo funciona · 3 pasos</span>
+      <h2>De pedido a equipo <span class="italic">activo</span> en <span class="em">15 días</span>.</h2>
+      <p class="lede">Sin papeleo, sin pruebas de imprenta. Te enviamos los diseños, apruebas, fabricamos, activamos. Listo.</p>
     </div>
-    <div class="cases-grid">
-      <article class="case-card">
-        <div class="case-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h4>Equipos de ventas</h4>
-        <p>Comparte contacto en reuniones comerciales y genera leads más efectivos con info siempre actualizada al instante.</p>
+
+    <div class="flow-grid">
+      <article class="flow-step">
+        <span class="step">01 / brief</span>
+        <div class="visual"><img src="../assets/hf/cards-premium.png" alt="LINKD diseña tu tarjeta corporativa"/></div>
+        <h4>Diseño corporativo</h4>
+        <p>Nos pasas tu manual de marca · diseñamos plantilla aprobada · te enviamos 3 alternativas en 48h para validación.</p>
       </article>
-      <article class="case-card">
-        <div class="case-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <h4>Eventos corporativos</h4>
-        <p>Networking fluido en conferencias, ferias y seminarios. Los asistentes se llevan tu marca en su teléfono.</p>
+
+      <article class="flow-step">
+        <span class="step">02 / fabricación</span>
+        <div class="visual"><img src="../assets/hf/cards-bw.png" alt="LINKD fabricación tarjetas NFC personalizadas"/></div>
+        <h4>Producción NFC</h4>
+        <p>Aprobado el diseño, fabricamos las tarjetas con chip NFC programado · acabados premium · despacho directo a oficinas.</p>
       </article>
-      <article class="case-card">
-        <div class="case-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
-        <h4>Onboarding de empleados</h4>
-        <p>Nuevos colaboradores listos para representar la empresa desde el día uno con tarjetas profesionales coherentes.</p>
-      </article>
-      <article class="case-card">
-        <div class="case-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <h4>Merchandising premium</h4>
-        <p>Sorprende a clientes o invitados con más que un simple recuerdo · una tarjeta NFC que sigue conectando.</p>
+
+      <article class="flow-step">
+        <span class="step">03 / activación</span>
+        <div class="visual"><img src="../assets/hf/celulares-3.png" alt="LINKD activa perfiles digitales por colaborador"/></div>
+        <h4>Perfiles digitales</h4>
+        <p>Cada colaborador recibe acceso a su perfil · tu admin gestiona todo desde un dashboard único con métricas en tiempo real.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ROI -->
-<section class="roi-section">
+<!-- ROI Calculator -->
+<section class="section roi-calc">
   <div class="section-inner">
     <div class="section-head">
       <span class="section-eyebrow">El ROI</span>
-      <h2>Números que tu <span class="em">CFO</span> va a amar.</h2>
-      <p class="lede">Datos reales de empresas chilenas que ya equiparon a sus equipos comerciales con LINKD.</p>
+      <h2>Calcula tu ahorro <span class="italic">en 10 segundos</span>.</h2>
+      <p class="lede">Mueve los sliders según el tamaño de tu equipo y eventos al año. El resultado se actualiza en vivo.</p>
     </div>
-    <div class="roi-grid">
-      <article class="roi-card">
-        <div class="num">85<small>%</small></div>
-        <h4>Reducción en costos</h4>
-        <p>Menos impresión, menos papel, menos pedidos urgentes a la imprenta.</p>
+
+    <div class="roi-calc-grid">
+      <div class="roi-controls">
+        <div class="roi-input">
+          <label>Tamaño del equipo</label>
+          <div class="value" id="roiTeamVal">25 personas</div>
+          <input type="range" id="roiTeam" min="5" max="200" step="1" value="25"/>
+        </div>
+        <div class="roi-input">
+          <label>Eventos / ferias al año</label>
+          <div class="value" id="roiEventsVal">4 eventos</div>
+          <input type="range" id="roiEvents" min="0" max="20" step="1" value="4"/>
+        </div>
+        <div class="roi-input">
+          <label>Reimpresiones al año (tarjeta papel)</label>
+          <div class="value" id="roiReprintVal">2 veces</div>
+          <input type="range" id="roiReprint" min="0" max="6" step="1" value="2"/>
+        </div>
+      </div>
+
+      <div class="roi-result">
+        <span class="roi-result-eye">Tu ahorro estimado · año 1</span>
+        <div class="roi-result-num"><span class="cur">$</span><span id="roiSavings">1.450.000</span> <small style="font-size:0.45em;font-weight:600;opacity:0.85;">CLP</small></div>
+        <div class="roi-result-lbl">vs lo que gastarías reimprimiendo tarjetas tradicionales para todo el equipo cada año.</div>
+        <div class="roi-result-detail">
+          <div class="roi-detail-item"><div class="v" id="roiLeads">+352</div><div class="l">Leads extra/año</div></div>
+          <div class="roi-detail-item"><div class="v" id="roiPayback">2.4 meses</div><div class="l">Payback estimado</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS DE USO con foto real -->
+<section class="cases-section" id="casos">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-eyebrow">Casos empresariales</span>
+      <h2>Cómo lo usan los <span class="italic">equipos</span> que ya operan con LINKD.</h2>
+      <p class="lede">Cada departamento convierte networking en pipeline · sin papel, sin app, sin fricción.</p>
+    </div>
+
+    <div class="cases-grid">
+      <article class="case-card">
+        <div class="case-visual"><img src="../assets/hf/card-camila.png" alt="LINKD equipo de ventas"/></div>
+        <div class="case-body">
+          <span class="case-tag">Ventas B2B</span>
+          <h4>Equipos comerciales</h4>
+          <p>Cada vendedor capta leads en reuniones con un tap · la info entra al CRM automática · el manager ve quién está vendiendo.</p>
+        </div>
       </article>
-      <article class="roi-card">
-        <div class="num">3.5<small>×</small></div>
-        <h4>Contactos efectivos por evento</h4>
-        <p>Cada tap deja registro · nada se pierde en bolsillos ni se mancha en la cartera.</p>
+
+      <article class="case-card">
+        <div class="case-visual"><img src="../assets/hf/card-green.png" alt="LINKD eventos corporativos"/></div>
+        <div class="case-body">
+          <span class="case-tag">Eventos</span>
+          <h4>Ferias &amp; conferencias</h4>
+          <p>Networking fluido en stands y eventos · los asistentes guardan tu marca con un tap, sin perder tarjetas en bolsillos.</p>
+        </div>
       </article>
-      <article class="roi-card">
-        <div class="num">2.4<small>×</small></div>
-        <h4>Mejora en conversión de leads</h4>
-        <p>Perfil digital con WhatsApp + Save Contact = follow-up al instante.</p>
+
+      <article class="case-card">
+        <div class="case-visual"><img src="../assets/hf/card-red.png" alt="LINKD onboarding"/></div>
+        <div class="case-body">
+          <span class="case-tag">Onboarding</span>
+          <h4>Nuevos colaboradores</h4>
+          <p>Día 1: cada nuevo empleado recibe su LINKD activada · representa la marca correctamente desde el primer cliente.</p>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <div class="case-visual"><img src="../assets/hf/card-basico.png" alt="LINKD merchandising"/></div>
+        <div class="case-body">
+          <span class="case-tag">Premium giveaway</span>
+          <h4>Clientes VIP</h4>
+          <p>Regalo corporativo memorable: una tarjeta NFC que sorprende · más impacto que cualquier swag tradicional.</p>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="testimonial-section">
-  <div class="testimonial-inner">
-    <blockquote>"Equipamos a toda nuestra fuerza de ventas con tarjetas LINKD personalizadas. En el primer trimestre redujimos costos de impresión, los vendedores actualizan su contacto en tiempo real y ya no perdemos leads en eventos. Para una empresa con muchos vendedores, es un cambio enorme."</blockquote>
-    <div class="testimonial-author">
-      <div class="testimonial-author-photo">
-        <img src="../assets/hf/clients/mercosur.jpg" alt="" onerror="this.style.display='none'; this.parentElement.innerHTML='MS';"/>
-      </div>
-      <div>
-        <div class="testimonial-author-name">Mercosur SPA</div>
-        <div class="testimonial-author-role">Equipo Comercial · Chile</div>
-      </div>
+<!-- TIMELINE DEPLOY -->
+<section class="tl-section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-eyebrow">Implementación</span>
+      <h2>De cotización a equipo <span class="em">operando</span>.</h2>
+      <p class="lede">Sin proyecto IT, sin instalaciones, sin onboarding largo. En 15 días tu equipo está con tarjetas activas y el dashboard corriendo.</p>
+    </div>
+
+    <div class="tl-grid">
+      <article class="tl-step">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="day">Día 1</div>
+        <h5>Cotización en 24h</h5>
+        <p>Nos contactas con tamaño del equipo · te devolvemos propuesta clara con costos, branding y plazos.</p>
+      </article>
+      <article class="tl-step">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div>
+        <div class="day">Día 3</div>
+        <h5>Diseño aprobado</h5>
+        <p>Te enviamos 3 alternativas según tu manual de marca · tú eliges · ajustamos hasta dejarlo perfecto.</p>
+      </article>
+      <article class="tl-step">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></div>
+        <div class="day">Día 10</div>
+        <h5>Tarjetas fabricadas</h5>
+        <p>Fabricación NFC con calidad premium · acabado mate o brillo · despacho directo a oficinas.</p>
+      </article>
+      <article class="tl-step">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="day">Día 15</div>
+        <h5>Equipo activo</h5>
+        <p>Cada colaborador recibe su LINKD + acceso al perfil · admin tiene dashboard con métricas en tiempo real.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -480,7 +605,7 @@ html, body { max-width: 100vw; overflow-x: hidden; }
       <img class="logo-light" src="../assets/logo/linkd-logo-black.png" alt="LINKD"/>
       <p>Tarjetas de presentación NFC inteligentes · perfiles digitales que evolucionan con tu carrera. Diseño y despacho desde Chile.</p>
       <div class="foot-social">
-        <a href="https://www.instagram.com/linkd.cl/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.6c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-10.4c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/></svg></a>
+        <a href="https://www.instagram.com/linkd.cl/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zm0 3.6c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-10.4c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/></svg></a>
         <a href="https://www.linkedin.com/company/tarjetalinkd/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.7H9.2V8.9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.2 7.3c-1.2 0-2.1-.9-2.1-2.1s.9-2.1 2.1-2.1c1.2 0 2.1.9 2.1 2.1s-.9 2.1-2.1 2.1zm1.8 13.1H3.4V8.9H7v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
         <a href="https://wa.me/56974850692?text=Hola%20LINKD" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C9.8 8.7 9.2 7.2 9 6.6c-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4S8 11.7 8.2 12c.2.3 2 3.1 5 4.2.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg></a>
       </div>
@@ -525,6 +650,7 @@ html, body { max-width: 100vw; overflow-x: hidden; }
 </a>
 
 <script>
+// Theme toggle
 const themeBtn = document.getElementById('themeToggle');
 if (themeBtn) {
   themeBtn.addEventListener('click', () => {
@@ -533,6 +659,39 @@ if (themeBtn) {
     else { document.documentElement.setAttribute('data-theme', 'light'); try { localStorage.setItem('linkd-theme', 'light'); } catch(e){} }
   });
 }
+
+// ROI Calculator
+function updateROI() {
+  const team = parseInt(document.getElementById('roiTeam').value);
+  const events = parseInt(document.getElementById('roiEvents').value);
+  const reprint = parseInt(document.getElementById('roiReprint').value);
+  document.getElementById('roiTeamVal').textContent = team + ' personas';
+  document.getElementById('roiEventsVal').textContent = events + ' eventos';
+  document.getElementById('roiReprintVal').textContent = reprint + (reprint === 1 ? ' vez' : ' veces');
+
+  // Costo papel: $8.000/persona × reimpresiones/año + $1.200.000 por evento (impresión rush + lost cards)
+  const costoPapel = team * 8000 * Math.max(reprint, 1) + events * 60000;
+  // Costo LINKD primer año (estimado): $19.990 × team × 1 (sin reimpresión + setup)
+  const costoLINKD = team * 19990 + 350000; // setup dashboard
+  const ahorro = Math.max(costoPapel - costoLINKD, costoPapel * 0.30);
+
+  // Leads extra estimados: 3.5x baseline × events × team / 4
+  const leadsBaseline = events * team * 6;
+  const leadsLINKD = events * team * 21;
+  const leadsExtra = leadsLINKD - leadsBaseline;
+
+  // Payback meses
+  const monthlyValue = ahorro / 12;
+  const payback = monthlyValue > 0 ? Math.max((costoLINKD / 12) / monthlyValue * 12, 1) : 12;
+
+  document.getElementById('roiSavings').textContent = Math.round(ahorro).toLocaleString('es-CL');
+  document.getElementById('roiLeads').textContent = '+' + Math.round(leadsExtra).toLocaleString('es-CL');
+  document.getElementById('roiPayback').textContent = payback.toFixed(1) + ' meses';
+}
+['roiTeam', 'roiEvents', 'roiReprint'].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateROI);
+});
+updateROI();
 </script>
 
 </body>
