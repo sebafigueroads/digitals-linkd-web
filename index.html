@@ -156,7 +156,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
 @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
 
-.hero-kicker { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; background: rgba(0,113,227,0.10); border: 1px solid rgba(0,113,227,0.32); font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.20em; color: var(--blue-bright); text-transform: uppercase; border-radius: 100px; margin-bottom: 28px; width: fit-content; backdrop-filter: blur(6px); }
+.hero-kicker { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; background: rgba(0,113,227,0.10); border: 1px solid rgba(0,113,227,0.32); font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--blue-bright); border-radius: 100px; margin-bottom: 28px; width: fit-content; backdrop-filter: blur(6px); }
 .hero-kicker::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--blue-bright); box-shadow: 0 0 12px var(--blue-bright); animation: pulse 1.8s infinite; }
 @keyframes pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: 0.55; } }
 
@@ -292,9 +292,8 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .tap-card-face { position: relative; width: 100%; height: 100%; background: linear-gradient(135deg, #08090C 0%, #15181F 70%, #1A1E26 100%); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 4px 12px rgba(0,113,227,0.30); overflow: hidden; }
 .tap-card-face::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top right, rgba(0,113,227,0.20), transparent 60%); pointer-events: none; }
 .tap-card-face::after { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(125deg, transparent 60%, rgba(255,255,255,0.06) 70%, transparent 80%); pointer-events: none; }
-.tap-card-brand { display: flex; align-items: center; gap: 7px; position: relative; z-index: 2; }
-.tap-card-mark { width: 26px; height: 26px; background: var(--blue); color: #fff; display: grid; place-items: center; font-family: var(--f-display); font-weight: 800; font-size: 14px; border-radius: 6px; box-shadow: 0 6px 14px -2px rgba(0,113,227,0.55); }
-.tap-card-word { font-family: var(--f-display); font-weight: 700; font-size: 18px; letter-spacing: -0.025em; color: #fff; }
+.tap-card-brand { display: flex; align-items: center; position: relative; z-index: 2; }
+.tap-card-logo { height: 22px; width: auto; display: block; }
 .tap-card-chip { display: flex; justify-content: flex-end; position: relative; z-index: 2; color: var(--blue-bright); }
 .tap-card-chip svg { width: 28px; height: 28px; }
 .tap-card-meta { display: flex; flex-direction: column; gap: 2px; position: relative; z-index: 2; font-family: var(--f-body); font-size: 8.5px; color: var(--ink-soft); font-weight: 500; letter-spacing: 0.04em; }
@@ -333,7 +332,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 /* === Sections === */
 .section { position: relative; z-index: 5; padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); max-width: 1380px; margin: 0 auto; }
 .section-head { margin-bottom: 56px; }
-.section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 18px; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--blue-bright); margin-bottom: 18px; }
 .section-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--blue-bright); }
 .section-head h2 { font-family: var(--f-display); font-weight: 700; font-size: clamp(2.4rem, 5.5vw, 4.6rem); line-height: 1.02; letter-spacing: -0.028em; max-width: 22ch; }
 .section-head h2 .italic { font-family: var(--f-serif); font-style: italic; font-weight: 400; color: var(--blue-bright); letter-spacing: -0.005em; padding-block: 0.06em; line-height: 1.04; display: inline-block; }
@@ -479,22 +478,12 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 [data-theme="light"] .orbita-core { background: linear-gradient(135deg, #FFFFFF 0%, #F5F6F8 60%, #EDEEF2 100%); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08), 0 24px 60px -10px rgba(0,0,0,0.30), 0 0 80px -16px rgba(0,113,227,0.30); }
 
 .orbita-core-brand {
-  display: flex; align-items: center; gap: 8px; position: relative; z-index: 2;
+  display: flex; align-items: center; position: relative; z-index: 2;
 }
-.orbita-core-mark {
-  width: 30px; height: 30px;
-  background: var(--blue); color: #fff;
-  display: grid; place-items: center;
-  font-family: var(--f-display); font-weight: 800; font-size: 17px;
-  border-radius: 7px;
-  box-shadow: 0 8px 16px -2px rgba(0,113,227,0.60);
-  line-height: 1;
-}
-.orbita-core-word {
-  font-family: var(--f-display); font-weight: 700; font-size: 22px;
-  letter-spacing: -0.028em; color: #fff; line-height: 1;
-}
-[data-theme="light"] .orbita-core-word { color: #08090C; }
+.orbita-core-logo { height: 28px; width: auto; display: block; }
+.orbita-core-logo--light { display: none; }
+[data-theme="light"] .orbita-core-logo--dark { display: none; }
+[data-theme="light"] .orbita-core-logo--light { display: block; }
 
 .orbita-core-chip {
   display: flex; justify-content: flex-end; position: relative; z-index: 2;
@@ -528,8 +517,8 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 @keyframes coreBreath { 50% { transform: translate(-50%, -50%) scale(1.10); opacity: 0.45; } }
 
 /* Mobile · core mantiene proporción card */
-@media (max-width: 720px) { .orbita-core { width: 42%; padding: 10px 12px; } .orbita-core-word { font-size: 18px; } .orbita-core-mark { width: 26px; height: 26px; font-size: 14px; border-radius: 6px; } .orbita-core-chip svg { width: 24px; height: 24px; } .orbita-core-halo { width: 46%; } }
-@media (max-width: 480px) { .orbita-core { width: 50%; } .orbita-core-word { font-size: 15px; } .orbita-core-mark { width: 22px; height: 22px; font-size: 12px; } .orbita-core-chip svg { width: 20px; height: 20px; } .orbita-core-meta { font-size: 8.5px; } .orbita-core-meta .nfc { font-size: 7.5px; } .orbita-core-halo { width: 54%; } }
+@media (max-width: 720px) { .orbita-core { width: 42%; padding: 10px 12px; } .orbita-core-logo { height: 22px; } .orbita-core-chip svg { width: 24px; height: 24px; } .orbita-core-halo { width: 46%; } }
+@media (max-width: 480px) { .orbita-core { width: 50%; } .orbita-core-logo { height: 18px; } .orbita-core-chip svg { width: 20px; height: 20px; } .orbita-core-meta { font-size: 8.5px; } .orbita-core-meta .nfc { font-size: 7.5px; } .orbita-core-halo { width: 54%; } }
 
 .orbita-ring {
   position: absolute; top: 50%; left: 50%;
@@ -574,13 +563,16 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .orbita-cta { margin-top: 60px; display: inline-flex; flex-direction: column; align-items: center; gap: 14px; }
 .orbita-cta p { font-size: 0.95rem; color: var(--ink-soft); max-width: 50ch; }
 
-/* === Partner badges row === */
-.partner-bar { padding: clamp(40px, 6vh, 70px) clamp(20px, 5vw, 60px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); position: relative; z-index: 5; }
-.partner-inner { max-width: 1380px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(28px, 5vw, 60px); }
-.partner-eyebrow { font-family: var(--f-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-mute); }
-.partner-logos { display: flex; gap: clamp(20px, 4vw, 44px); align-items: center; flex-wrap: wrap; justify-content: center; }
-.partner-logos img { height: clamp(36px, 5vh, 52px); width: auto; transition: opacity 0.3s, filter 0.3s; opacity: 0.85; }
-.partner-logos img:hover { opacity: 1; transform: scale(1.05); }
+/* === Partner badges row · Google + Meta GRANDES === */
+.partner-bar { padding: clamp(56px, 8vh, 100px) clamp(20px, 5vw, 60px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); position: relative; z-index: 5; }
+.partner-inner { max-width: 1380px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: clamp(28px, 4vw, 44px); }
+.partner-eyebrow { font-family: var(--f-body); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 12px; }
+.partner-eyebrow::before, .partner-eyebrow::after { content: ''; width: 36px; height: 1px; background: var(--line-strong); }
+.partner-logos { display: flex; gap: clamp(40px, 7vw, 90px); align-items: center; flex-wrap: wrap; justify-content: center; }
+.partner-logos img { height: clamp(86px, 11vh, 120px); width: auto; transition: opacity 0.3s, transform 0.3s; opacity: 0.96; filter: drop-shadow(0 14px 26px rgba(0,0,0,0.18)); }
+.partner-logos img:hover { opacity: 1; transform: scale(1.06); }
+@media (max-width: 760px) { .partner-logos img { height: clamp(72px, 14vw, 96px); } .partner-logos { gap: clamp(24px, 6vw, 50px); } }
+@media (max-width: 480px) { .partner-logos img { height: 64px; } }
 
 /* === Beneficios grid === */
 .benefits-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); background: var(--bg-2); border-top: 1px solid var(--line); position: relative; z-index: 5; }
@@ -638,27 +630,19 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .showcase-tile .tile-tag { position: absolute; bottom: 18px; left: 18px; z-index: 2; font-family: var(--f-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue-bright); padding: 5px 11px; background: rgba(8,9,12,0.74); backdrop-filter: blur(10px); border-radius: 100px; border: 1px solid var(--line); }
 [data-theme="light"] .showcase-tile .tile-tag { background: rgba(255,255,255,0.92); }
 
-/* === Clientes band === */
+/* === Clientes band · logos blancos digitals style === */
 .clients-section { padding: clamp(60px, 9vh, 110px) clamp(20px, 5vw, 60px); background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 5; overflow: hidden; }
 .clients-inner { max-width: 1380px; margin: 0 auto; text-align: center; }
-.clients-head { font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 32px; display: inline-flex; align-items: center; gap: 12px; }
+.clients-head { font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); margin-bottom: 32px; display: inline-flex; align-items: center; gap: 12px; }
 .clients-head::before, .clients-head::after { content: ''; width: 30px; height: 1px; background: var(--line-strong); }
-.clients-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.clients-track { display: flex; gap: 18px; align-items: center; animation: clientsRoll 36s linear infinite; width: max-content; }
-.client-chip {
-  flex-shrink: 0;
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 14px 24px;
-  height: 72px;
-  display: grid; place-items: center;
-  min-width: 140px;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
-}
-.client-chip:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
-.client-chip img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+.clients-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.clients-track { display: flex; gap: clamp(40px, 5vw, 72px); align-items: center; animation: clientsRoll 50s linear infinite; width: max-content; }
+.client-logo { flex-shrink: 0; height: 56px; width: auto; max-width: 160px; opacity: 0.78; filter: brightness(1) contrast(1); transition: opacity 0.3s, transform 0.3s; object-fit: contain; display: block; }
+.client-logo:hover { opacity: 1; transform: scale(1.06); }
+[data-theme="light"] .client-logo { filter: invert(1) brightness(0.35); opacity: 0.60; }
+[data-theme="light"] .client-logo:hover { opacity: 0.95; }
+@media (max-width: 760px) { .client-logo { height: 44px; max-width: 130px; } .clients-track { gap: clamp(28px, 7vw, 42px); } }
+@media (max-width: 480px) { .client-logo { height: 36px; max-width: 110px; } }
 @keyframes clientsRoll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* === CTA === */
@@ -796,8 +780,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
         <div class="tap-card" aria-hidden="true">
           <div class="tap-card-face front">
             <div class="tap-card-brand">
-              <span class="tap-card-mark">L</span>
-              <span class="tap-card-word">linkd</span>
+              <img class="tap-card-logo" src="assets/logo/linkd-logo-white.png" alt="linkd"/>
             </div>
             <div class="tap-card-chip">
               <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="16" cy="16" r="3"/><path d="M16 8v3M16 21v3M8 16h3M21 16h3M10.5 10.5l2.1 2.1M19.4 19.4l2.1 2.1M10.5 21.5l2.1-2.1M19.4 12.6l2.1-2.1"/></svg>
@@ -830,20 +813,20 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
                 <span class="tps-tap-label">NFC detectado</span>
               </div>
 
-              <!-- Profile · Digitals digital card -->
+              <!-- Profile · digital card (persona ejemplo) -->
               <div class="tps-profile">
                 <div class="tps-cover">
                   <div class="tps-cover-brand">
-                    <span class="tps-cover-mark">D</span>
-                    <span class="tps-cover-word">Digitals</span>
+                    <span class="tps-cover-mark">A</span>
+                    <span class="tps-cover-word">Acme Studio</span>
                   </div>
                 </div>
                 <div class="tps-avatar">
-                  <span class="tps-avatar-initials">SF</span>
+                  <span class="tps-avatar-initials">CR</span>
                 </div>
-                <div class="tps-name">Sebastián Figueroa</div>
-                <div class="tps-title">Founder · Digitals</div>
-                <div class="tps-company">Agencia &amp; Consultora · Marketing + IA</div>
+                <div class="tps-name">Camila Rojas</div>
+                <div class="tps-title">Sales Director · Acme Studio</div>
+                <div class="tps-company">Diseño &amp; Estrategia · Santiago, Chile</div>
 
                 <!-- Primary actions -->
                 <div class="tps-actions">
@@ -861,19 +844,19 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
                 <div class="tps-info">
                   <div class="tps-row">
                     <span class="tps-row-ico tps-i-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-                    <div class="tps-row-body"><span class="tps-row-lbl">Teléfono</span><span class="tps-row-val">+56 9 5925 4546</span></div>
+                    <div class="tps-row-body"><span class="tps-row-lbl">Teléfono</span><span class="tps-row-val">+56 9 8741 2305</span></div>
                   </div>
                   <div class="tps-row">
                     <span class="tps-row-ico tps-i-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-                    <div class="tps-row-body"><span class="tps-row-lbl">Email</span><span class="tps-row-val">sebastian@digitals.cl</span></div>
+                    <div class="tps-row-body"><span class="tps-row-lbl">Email</span><span class="tps-row-val">camila@acme.cl</span></div>
                   </div>
                   <div class="tps-row">
                     <span class="tps-row-ico tps-i-web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
-                    <div class="tps-row-body"><span class="tps-row-lbl">Web</span><span class="tps-row-val">digitals.cl</span></div>
+                    <div class="tps-row-body"><span class="tps-row-lbl">Web</span><span class="tps-row-val">acme.cl/camila</span></div>
                   </div>
                   <div class="tps-row">
                     <span class="tps-row-ico tps-i-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-                    <div class="tps-row-body"><span class="tps-row-lbl">Oficina</span><span class="tps-row-val">Providencia · Santiago</span></div>
+                    <div class="tps-row-body"><span class="tps-row-lbl">Oficina</span><span class="tps-row-val">Las Condes · Santiago</span></div>
                   </div>
                 </div>
 
@@ -980,7 +963,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
             <li>QR de respaldo impreso</li>
             <li class="muted">Sin diseño custom</li>
           </ul>
-          <a href="https://linkd.cl/producto/tarjeta-linkd-plan-basico/" target="_blank" rel="noopener" class="btn-buy">Comprar Básico →</a>
+          <a href="https://linkd.cl/empresas/" target="_blank" rel="noopener" class="btn-buy">Cotizar para mi empresa →</a>
         </div>
       </article>
 
@@ -1005,7 +988,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
             <li>Pruebas digitales antes de imprimir</li>
             <li>Update remoto ilimitado</li>
           </ul>
-          <a href="https://linkd.cl/producto/tarjeta-linkd-plan-premium/" target="_blank" rel="noopener" class="btn-buy">Comprar Intermedio →</a>
+          <a href="https://linkd.cl/empresas/" target="_blank" rel="noopener" class="btn-buy">Cotizar para mi empresa →</a>
         </div>
       </article>
 
@@ -1030,7 +1013,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
             <li>Perfil digital con branding propio</li>
             <li>Soporte prioritario</li>
           </ul>
-          <a href="https://wa.me/56974850692?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20Full%20Personalizado" target="_blank" rel="noopener" class="btn-buy">Comprar Full →</a>
+          <a href="https://linkd.cl/empresas/" target="_blank" rel="noopener" class="btn-buy">Cotizar para mi empresa →</a>
         </div>
       </article>
 
@@ -1061,7 +1044,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
             <li>Reportes ejecutivos mensuales</li>
             <li>Onboarding técnico incluido</li>
           </ul>
-          <a href="https://linkd.cl/empresas/" target="_blank" rel="noopener" class="btn-buy">Ver plan Empresas →</a>
+          <a href="https://linkd.cl/empresas/" target="_blank" rel="noopener" class="btn-buy">Cotizar Enterprise →</a>
         </div>
       </article>
 
@@ -1118,8 +1101,8 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
       <div class="orbita-core-halo" aria-hidden="true"></div>
       <div class="orbita-core" aria-label="Tarjeta LINKD NFC">
         <div class="orbita-core-brand">
-          <span class="orbita-core-mark">L</span>
-          <span class="orbita-core-word">linkd</span>
+          <img class="orbita-core-logo orbita-core-logo--dark" src="assets/logo/linkd-logo-white.png" alt="linkd"/>
+          <img class="orbita-core-logo orbita-core-logo--light" src="assets/logo/linkd-logo-black.png" alt="linkd"/>
         </div>
         <div class="orbita-core-chip">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="16" r="3"/><path d="M16 7v3M16 22v3M7 16h3M22 16h3M9.8 9.8l2.1 2.1M20.1 20.1l2.1 2.1M9.8 22.2l2.1-2.1M20.1 11.9l2.1-2.1"/></svg>
@@ -1150,7 +1133,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 
     <div class="orbita-cta reveal-up">
       <p>Integramos sobre <strong>Hapee</strong> (nuestra plataforma GHL whitelabel) y plataformas líderes vía API.</p>
-      <a href="#productos" class="btn-primary">Ver plan Enterprise →</a>
+      <a href="https://linkd.cl/empresas/" target="_blank" rel="noopener" class="btn-primary">Cotizar para mi empresa →</a>
     </div>
   </div>
 </section>
@@ -1308,20 +1291,55 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
     <div class="clients-head">Ya confían en LINKD</div>
     <div class="clients-marquee">
       <div class="clients-track">
-        <div class="client-chip"><img src="assets/hf/clients/digitals.jpg" alt="Digitals"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/cirumed.jpg" alt="Cirumed"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/khipu.jpg" alt="Khipu"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/mercosur.jpg" alt="Mercosur"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/flamamed.jpg" alt="Flamamed"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/academia.jpg" alt="Academia"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/america_travel.jpg" alt="América Travel"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/digitals.jpg" alt="Digitals"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/cirumed.jpg" alt="Cirumed"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/khipu.jpg" alt="Khipu"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/mercosur.jpg" alt="Mercosur"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/flamamed.jpg" alt="Flamamed"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/academia.jpg" alt="Academia"/></div>
-        <div class="client-chip"><img src="assets/hf/clients/america_travel.jpg" alt="América Travel"/></div>
+        <img class="client-logo" src="assets/clients-white/1.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/2.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/3.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/4.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/5.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/6.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/7.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/8.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/9.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/10.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/11.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/12.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/13.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/14.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/15.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/16.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/17.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/18.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/19.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/20.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/21.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/22.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/23.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/24.webp" alt="Cliente"/>
+        <!-- duplicado para loop -->
+        <img class="client-logo" src="assets/clients-white/1.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/2.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/3.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/4.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/5.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/6.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/7.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/8.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/9.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/10.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/11.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/12.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/13.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/14.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/15.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/16.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/17.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/18.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/19.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/20.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/21.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/22.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/23.webp" alt="Cliente"/>
+        <img class="client-logo" src="assets/clients-white/24.webp" alt="Cliente"/>
       </div>
     </div>
   </div>

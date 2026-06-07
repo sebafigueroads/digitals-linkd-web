@@ -146,6 +146,32 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 @media (max-width: 600px) { .eh-visual { aspect-ratio: 1/1; max-width: 400px; } .eh-dash { width: 72%; } .eh-card { width: 60%; } .eh-trust { gap: 16px; } .eh-trust-item .num { font-size: 1.4rem; } }
 @media (max-width: 480px) { .eh-trust-item { flex: 1 1 calc(50% - 8px); min-width: 0; } }
 
+/* === Clientes marquee · logos blancos digitals === */
+.clients-section { padding: clamp(50px, 7vh, 88px) clamp(20px, 5vw, 60px); background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; position: relative; z-index: 5; }
+.clients-inner { max-width: 1380px; margin: 0 auto; text-align: center; }
+.clients-head { font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); margin-bottom: 28px; display: inline-flex; align-items: center; gap: 12px; }
+.clients-head::before, .clients-head::after { content: ''; width: 30px; height: 1px; background: var(--line-strong); }
+.clients-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.clients-track { display: flex; gap: clamp(40px, 5vw, 72px); align-items: center; animation: clientsRoll 50s linear infinite; width: max-content; }
+.client-logo { flex-shrink: 0; height: 56px; width: auto; max-width: 160px; opacity: 0.78; transition: opacity 0.3s, transform 0.3s; object-fit: contain; display: block; }
+.client-logo:hover { opacity: 1; transform: scale(1.06); }
+[data-theme="light"] .client-logo { filter: invert(1) brightness(0.35); opacity: 0.60; }
+[data-theme="light"] .client-logo:hover { opacity: 0.95; }
+@media (max-width: 760px) { .client-logo { height: 44px; max-width: 130px; } .clients-track { gap: clamp(28px, 7vw, 42px); } }
+@media (max-width: 480px) { .client-logo { height: 36px; max-width: 110px; } }
+@keyframes clientsRoll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* === Partner badges · Google Premier + Meta Business GRANDES === */
+.partner-bar { padding: clamp(56px, 8vh, 100px) clamp(20px, 5vw, 60px); border-bottom: 1px solid var(--line); background: var(--bg-2); position: relative; z-index: 5; }
+.partner-inner { max-width: 1380px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: clamp(28px, 4vw, 44px); }
+.partner-eyebrow { font-family: var(--f-body); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 12px; }
+.partner-eyebrow::before, .partner-eyebrow::after { content: ''; width: 36px; height: 1px; background: var(--line-strong); }
+.partner-logos { display: flex; gap: clamp(40px, 7vw, 90px); align-items: center; flex-wrap: wrap; justify-content: center; }
+.partner-logos img { height: clamp(86px, 11vh, 120px); width: auto; transition: opacity 0.3s, transform 0.3s; opacity: 0.96; filter: drop-shadow(0 14px 26px rgba(0,0,0,0.18)); }
+.partner-logos img:hover { opacity: 1; transform: scale(1.06); }
+@media (max-width: 760px) { .partner-logos img { height: clamp(72px, 14vw, 96px); } .partner-logos { gap: clamp(24px, 6vw, 50px); } }
+@media (max-width: 480px) { .partner-logos img { height: 64px; } }
+
 /* === Section general === */
 .section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; }
 .section-inner { max-width: 1380px; margin: 0 auto; }
@@ -383,6 +409,64 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 
       <!-- NFC ping en el punto de tap -->
       <div class="eh-ping" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES marquee · logos blancos digitals -->
+<section class="clients-section">
+  <div class="clients-inner">
+    <div class="clients-head">Equipos que ya equipan con LINKD</div>
+    <div class="clients-marquee">
+      <div class="clients-track">
+        <img class="client-logo" src="../assets/clients-white/1.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/2.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/3.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/4.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/5.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/6.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/7.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/8.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/9.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/10.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/11.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/12.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/13.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/14.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/15.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/16.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/17.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/18.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/19.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/20.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/21.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/22.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/23.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/24.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/1.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/2.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/3.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/4.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/5.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/6.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/7.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/8.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/9.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/10.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/11.webp" alt="Cliente"/>
+        <img class="client-logo" src="../assets/clients-white/12.webp" alt="Cliente"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS · Google Premier + Meta Business -->
+<section class="partner-bar">
+  <div class="partner-inner">
+    <span class="partner-eyebrow">Partners certificados</span>
+    <div class="partner-logos">
+      <img src="../assets/orbita/cert-google.webp" alt="Google Premier Partner" title="Google Premier Partner"/>
+      <img src="../assets/orbita/cert-meta.webp" alt="Meta Business Partner" title="Meta Business Partner"/>
     </div>
   </div>
 </section>
