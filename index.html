@@ -176,11 +176,10 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .btn-ghost:hover { border-color: var(--blue); color: var(--blue-bright); transform: translateY(-2px); }
 
 /* === Hero card (3D tilt) === */
-.hero-card-wrap { position: relative; perspective: 1800px; aspect-ratio: 1/1; max-width: 540px; width: 100%; margin: 0 auto; }
-.hero-card-wrap::before { content: ''; position: absolute; inset: -10%; background: radial-gradient(circle at 60% 40%, rgba(0,113,227,0.35), transparent 60%); filter: blur(40px); z-index: 0; }
-.hero-card { position: relative; width: 100%; aspect-ratio: 1.586 / 1; max-height: 80%; top: 50%; transform: translateY(-50%) rotateY(-12deg) rotateX(8deg); transform-style: preserve-3d; transition: transform 0.6s var(--ease); border-radius: 20px; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6), 0 0 60px -20px rgba(0,113,227,0.4); overflow: hidden; will-change: transform; }
-.hero-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 30%, transparent 60%, rgba(0,113,227,0.32) 110%); pointer-events: none; mix-blend-mode: overlay; }
+.hero-card-wrap { position: relative; perspective: 1800px; aspect-ratio: 1/1; max-width: 600px; width: 100%; margin: 0 auto; display: grid; place-items: center; }
+.hero-card-wrap::before { content: ''; position: absolute; inset: 5%; background: radial-gradient(circle at 50% 50%, rgba(0,113,227,0.45), transparent 60%); filter: blur(60px); z-index: 0; }
+.hero-card { position: relative; width: 100%; height: 100%; transform: rotateY(-6deg) rotateX(4deg); transform-style: preserve-3d; transition: transform 0.6s var(--ease); will-change: transform; }
+.hero-card img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 40px 60px rgba(0,0,0,0.6)) drop-shadow(0 0 80px rgba(0,113,227,0.32)); }
 .hero-card-rings { position: absolute; top: 12%; right: 8%; display: flex; align-items: center; justify-content: center; z-index: 4; pointer-events: none; }
 .hero-card-rings span { position: absolute; border: 1.5px solid var(--blue-bright); border-radius: 50%; opacity: 0; animation: ring-pulse 2.4s var(--ease) infinite; }
 .hero-card-rings span:nth-child(1) { width: 40px; height: 40px; animation-delay: 0s; }
@@ -232,7 +231,12 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; perspective: 1600px; margin-top: 50px; }
 @media (max-width: 980px) { .products-grid { grid-template-columns: 1fr; } }
 
-.product-card { position: relative; padding: 38px 34px 34px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; transition: transform 0.55s var(--ease), border-color 0.4s, box-shadow 0.5s; transform-style: preserve-3d; display: flex; flex-direction: column; cursor: default; min-height: 520px; }
+.product-card { position: relative; padding: 0 0 34px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; transition: transform 0.55s var(--ease), border-color 0.4s, box-shadow 0.5s; transform-style: preserve-3d; display: flex; flex-direction: column; cursor: default; min-height: 620px; }
+.product-mockup { position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(160deg, var(--bg-3) 0%, var(--bg-warm) 100%); display: grid; place-items: center; padding: 24px; }
+.product-mockup::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, rgba(0,113,227,0.18), transparent 70%); pointer-events: none; }
+.product-mockup img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.45)); transition: transform 0.6s var(--ease); position: relative; z-index: 1; }
+.product-card:hover .product-mockup img { transform: scale(1.04) rotate(-1deg); }
+.product-body { padding: 30px 34px 0; display: flex; flex-direction: column; flex: 1; }
 .product-card.featured { background: linear-gradient(165deg, var(--bg-card) 0%, rgba(0,113,227,0.10) 100%); border-color: rgba(0,113,227,0.45); transform: scale(1.02); }
 @media (max-width: 980px) { .product-card.featured { transform: none; } }
 .product-card:hover { transform: translateY(-8px) rotateX(2deg); border-color: rgba(0,113,227,0.55); box-shadow: 0 38px 80px -20px rgba(0,113,227,0.30); }
@@ -324,6 +328,33 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .faq-item[open] summary::after { transform: rotate(45deg); }
 .faq-body { padding: 0 26px 22px; font-size: 0.94rem; line-height: 1.6; color: var(--ink-soft); }
 
+/* === Showcase galería + Clientes === */
+.showcase-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; overflow: hidden; }
+.showcase-inner { max-width: 1380px; margin: 0 auto; }
+.showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
+@media (max-width: 900px) { .showcase-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .showcase-grid { grid-template-columns: 1fr; } }
+.showcase-tile { position: relative; aspect-ratio: 1/1; background: linear-gradient(160deg, var(--bg-3) 0%, var(--bg-warm) 100%); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; place-items: center; padding: 30px; transition: transform 0.45s var(--ease), border-color 0.4s, box-shadow 0.45s; }
+.showcase-tile::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, rgba(0,113,227,0.16), transparent 70%); pointer-events: none; }
+.showcase-tile:hover { transform: translateY(-6px); border-color: rgba(0,113,227,0.45); box-shadow: 0 28px 60px -16px rgba(0,113,227,0.20); }
+.showcase-tile img { max-width: 80%; max-height: 80%; object-fit: contain; filter: drop-shadow(0 16px 32px rgba(0,0,0,0.45)); transition: transform 0.7s var(--ease); position: relative; z-index: 1; }
+.showcase-tile:hover img { transform: scale(1.06) rotate(-2deg); }
+.showcase-tile .tile-tag { position: absolute; bottom: 18px; left: 18px; z-index: 2; font-family: var(--f-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue-bright); padding: 5px 11px; background: rgba(8,9,12,0.74); backdrop-filter: blur(10px); border-radius: 100px; border: 1px solid var(--line); }
+[data-theme="light"] .showcase-tile .tile-tag { background: rgba(255,255,255,0.92); }
+
+/* === Clientes band === */
+.clients-section { padding: clamp(60px, 9vh, 110px) clamp(20px, 5vw, 60px); background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 5; overflow: hidden; }
+.clients-inner { max-width: 1380px; margin: 0 auto; text-align: center; }
+.clients-head { font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 32px; display: inline-flex; align-items: center; gap: 12px; }
+.clients-head::before, .clients-head::after { content: ''; width: 30px; height: 1px; background: var(--line-strong); }
+.clients-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.clients-track { display: flex; gap: clamp(40px, 6vw, 80px); align-items: center; animation: clientsRoll 32s linear infinite; width: max-content; }
+.clients-track img { height: 42px; width: auto; object-fit: contain; opacity: 0.78; filter: grayscale(1); transition: filter 0.4s, opacity 0.4s; flex-shrink: 0; }
+[data-theme="dark"] .clients-track img, :root:not([data-theme]) .clients-track img { filter: grayscale(1) invert(1) brightness(1.2); }
+.clients-track img:hover { opacity: 1; filter: none; }
+[data-theme="dark"] .clients-track img:hover, :root:not([data-theme]) .clients-track img:hover { filter: invert(0); }
+@keyframes clientsRoll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
 /* === CTA === */
 .cta-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; }
 .cta-inner { max-width: 1080px; margin: 0 auto; }
@@ -404,6 +435,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
   <nav class="topbar-nav">
     <a href="#como">Cómo funciona</a>
     <a href="#productos">Productos</a>
+    <a href="#showcase">Galería</a>
     <a href="#stand">Stand reseñas</a>
     <a href="#beneficios">Beneficios</a>
     <a href="#faq">FAQ</a>
@@ -441,9 +473,8 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
     </div>
     <div class="hero-card-wrap" id="heroCardWrap">
       <div class="hero-card" id="heroCard">
-        <img src="assets/hf/hero.jpg" alt="Tarjeta LINKD NFC"/>
+        <img src="assets/hf/hero.png" alt="LINKD · tarjeta NFC junto a celular mostrando perfil digital"/>
       </div>
-      <div class="hero-card-rings"><span></span><span></span><span></span></div>
     </div>
   </div>
 </section>
@@ -506,63 +537,78 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
     <div class="products-grid">
 
       <article class="product-card reveal-up">
-        <span class="product-tag">PLAN / 01</span>
-        <h3>Básico</h3>
-        <p class="product-desc">Branding LINKD por ambos lados de la tarjeta. Lista para usar.</p>
-        <div class="product-price">
-          <span class="currency">$</span>
-          <span class="amount">29.990</span>
-          <span class="unit">CLP</span>
+        <div class="product-mockup">
+          <img src="assets/hf/card-basico.png" alt="LINKD Plan Básico · tarjeta blanca con pattern LINKD"/>
         </div>
-        <ul class="product-features">
-          <li>Tarjeta NFC original LINKD</li>
-          <li>Perfil digital personalizado</li>
-          <li>Branding LINKD ambos lados</li>
-          <li>Update remoto ilimitado</li>
-          <li>QR de respaldo impreso</li>
-          <li class="muted">Sin diseño custom</li>
-        </ul>
-        <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20B%C3%A1sico" target="_blank" rel="noopener" class="btn-buy">Comprar Básico →</a>
+        <div class="product-body">
+          <span class="product-tag">PLAN / 01</span>
+          <h3>Básico</h3>
+          <p class="product-desc">Branding LINKD por ambos lados de la tarjeta. Lista para usar.</p>
+          <div class="product-price">
+            <span class="currency">$</span>
+            <span class="amount">29.990</span>
+            <span class="unit">CLP</span>
+          </div>
+          <ul class="product-features">
+            <li>Tarjeta NFC original LINKD</li>
+            <li>Perfil digital personalizado</li>
+            <li>Branding LINKD ambos lados</li>
+            <li>Update remoto ilimitado</li>
+            <li>QR de respaldo impreso</li>
+            <li class="muted">Sin diseño custom</li>
+          </ul>
+          <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20B%C3%A1sico" target="_blank" rel="noopener" class="btn-buy">Comprar Básico →</a>
+        </div>
       </article>
 
       <article class="product-card featured reveal-up">
-        <span class="product-tag featured-star">RECOMENDADO</span>
-        <h3>Intermedio</h3>
-        <p class="product-desc">Tu diseño personalizado en un lado · branding LINKD en el otro.</p>
-        <div class="product-price">
-          <span class="currency">$</span>
-          <span class="amount">34.990</span>
-          <span class="unit">CLP</span>
+        <div class="product-mockup">
+          <img src="assets/hf/cards-premium.png" alt="LINKD Plan Intermedio · tarjeta con tu logo y nombre"/>
         </div>
-        <ul class="product-features">
-          <li>Todo lo del plan Básico</li>
-          <li><b>Diseño custom en 1 lado</b></li>
-          <li>Logo + texto + tu paleta</li>
-          <li>Asesoría de diseño incluida</li>
-          <li>Pruebas digitales antes de imprimir</li>
-          <li>Update remoto ilimitado</li>
-        </ul>
-        <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20Intermedio" target="_blank" rel="noopener" class="btn-buy">Comprar Intermedio →</a>
+        <div class="product-body">
+          <span class="product-tag featured-star">RECOMENDADO</span>
+          <h3>Intermedio</h3>
+          <p class="product-desc">Tu diseño personalizado en un lado · branding LINKD en el otro.</p>
+          <div class="product-price">
+            <span class="currency">$</span>
+            <span class="amount">34.990</span>
+            <span class="unit">CLP</span>
+          </div>
+          <ul class="product-features">
+            <li>Todo lo del plan Básico</li>
+            <li><b>Diseño custom en 1 lado</b></li>
+            <li>Logo + texto + tu paleta</li>
+            <li>Asesoría de diseño incluida</li>
+            <li>Pruebas digitales antes de imprimir</li>
+            <li>Update remoto ilimitado</li>
+          </ul>
+          <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20Intermedio" target="_blank" rel="noopener" class="btn-buy">Comprar Intermedio →</a>
+        </div>
       </article>
 
       <article class="product-card reveal-up">
-        <span class="product-tag">PLAN / 03</span>
-        <h3>Full personalizado</h3>
-        <p class="product-desc">Diseño completo a tu pinta · ambos lados custom · acabado premium.</p>
-        <div class="product-price">
-          <span class="currency">$</span>
-          <span class="amount">49.990</span>
-          <span class="unit">CLP</span>
+        <div class="product-mockup">
+          <img src="assets/hf/card-camila.png" alt="LINKD Plan Full · tarjeta full personalizada"/>
         </div>
-        <ul class="product-features">
-          <li>Todo lo del plan Intermedio</li>
-          <li><b>Diseño custom ambos lados</b></li>
-          <li>Acabados premium (mate / brillo)</li>
-          <li>Hasta 3 revisiones de diseño</li>
-          <li>Perfil digital con branding propio</li>
-          <li>Soporte prioritario</li>
-        </ul>
-        <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20Full%20Personalizado" target="_blank" rel="noopener" class="btn-buy">Comprar Full →</a>
+        <div class="product-body">
+          <span class="product-tag">PLAN / 03</span>
+          <h3>Full personalizado</h3>
+          <p class="product-desc">Diseño completo a tu pinta · ambos lados custom · acabado premium.</p>
+          <div class="product-price">
+            <span class="currency">$</span>
+            <span class="amount">49.990</span>
+            <span class="unit">CLP</span>
+          </div>
+          <ul class="product-features">
+            <li>Todo lo del plan Intermedio</li>
+            <li><b>Diseño custom ambos lados</b></li>
+            <li>Acabados premium (mate / brillo)</li>
+            <li>Hasta 3 revisiones de diseño</li>
+            <li>Perfil digital con branding propio</li>
+            <li>Soporte prioritario</li>
+          </ul>
+          <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20Full%20Personalizado" target="_blank" rel="noopener" class="btn-buy">Comprar Full →</a>
+        </div>
       </article>
 
     </div>
@@ -574,7 +620,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
   <div class="stand-inner">
     <div class="stand-media reveal-up">
       <span class="live-badge">Stand LIVE</span>
-      <img src="assets/hf/stand.jpg" alt="Stand de reseñas LINKD"/>
+      <img src="assets/hf/resenas.jpg" alt="Stand de reseñas LINKD"/>
     </div>
     <div class="stand-copy reveal-up">
       <span class="hero-kicker">— Para tu negocio</span>
@@ -667,7 +713,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 <section class="lifestyle-section">
   <div class="lifestyle-inner">
     <div class="lifestyle-media reveal-up">
-      <img src="assets/hf/lifestyle.jpg" alt="Networking con LINKD"/>
+      <img src="assets/hf/celulares-3.png" alt="LINKD · perfiles digitales en 3 celulares con paletas distintas"/>
       <div class="pull-quote">Lo saqué en una reunión de trabajo y la respuesta fue inmediata. Ahora todos quieren una.</div>
     </div>
     <div class="lifestyle-copy reveal-up">
@@ -715,6 +761,50 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
       <summary>¿El stand de reseñas viene con la tarjeta o por separado?</summary>
       <div class="faq-body">Por separado — el stand es un producto independiente diseñado para negocios (restaurantes, cafés, locales, profesionales independientes con consulta) que quieren aumentar sus reseñas en Google. Coordinamos diseño y configuración directo a tu Google Business Profile.</div>
     </details>
+  </div>
+</section>
+
+<!-- SHOWCASE GALERÍA -->
+<section class="showcase-section" id="showcase">
+  <div class="showcase-inner">
+    <div class="section-head reveal-up" style="text-align: center; max-width: 60ch; margin-left: auto; margin-right: auto;">
+      <span class="section-eyebrow" style="margin-bottom: 14px;">Galería · diseños reales</span>
+      <h2 style="margin: 0 auto;">Cada LINKD<br/>es <span class="italic">única.</span></h2>
+      <p style="margin-left: auto; margin-right: auto;">Mira algunos diseños reales que entregamos a clientes — desde el plan Básico hasta diseños totalmente personalizados.</p>
+    </div>
+    <div class="showcase-grid">
+      <div class="showcase-tile reveal-up"><img src="assets/hf/cards-bw.png" alt="LINKD blanco y negro"/><span class="tile-tag">Básico</span></div>
+      <div class="showcase-tile reveal-up"><img src="assets/hf/card-red.png" alt="LINKD roja"/><span class="tile-tag">Custom · rojo</span></div>
+      <div class="showcase-tile reveal-up"><img src="assets/hf/card-green.png" alt="LINKD verde"/><span class="tile-tag">Custom · verde</span></div>
+      <div class="showcase-tile reveal-up"><img src="assets/hf/card-empresa.png" alt="LINKD empresa"/><span class="tile-tag">Empresa</span></div>
+      <div class="showcase-tile reveal-up"><img src="assets/hf/card-camila.png" alt="LINKD Camila"/><span class="tile-tag">Full custom</span></div>
+      <div class="showcase-tile reveal-up"><img src="assets/hf/perfil-mano.jpg" alt="LINKD perfil en mano" style="max-width: 100%; max-height: 100%;"/><span class="tile-tag">Perfil live</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES BAND -->
+<section class="clients-section">
+  <div class="clients-inner">
+    <div class="clients-head">Ya confían en LINKD</div>
+    <div class="clients-marquee">
+      <div class="clients-track">
+        <img src="assets/hf/clients/digitals.jpg" alt="Digitals"/>
+        <img src="assets/hf/clients/cirumed.jpg" alt="Cirumed"/>
+        <img src="assets/hf/clients/khipu.jpg" alt="Khipu"/>
+        <img src="assets/hf/clients/mercosur.jpg" alt="Mercosur"/>
+        <img src="assets/hf/clients/flamamed.jpg" alt="Flamamed"/>
+        <img src="assets/hf/clients/academia.jpg" alt="Academia"/>
+        <img src="assets/hf/clients/america_travel.jpg" alt="América Travel"/>
+        <img src="assets/hf/clients/digitals.jpg" alt="Digitals"/>
+        <img src="assets/hf/clients/cirumed.jpg" alt="Cirumed"/>
+        <img src="assets/hf/clients/khipu.jpg" alt="Khipu"/>
+        <img src="assets/hf/clients/mercosur.jpg" alt="Mercosur"/>
+        <img src="assets/hf/clients/flamamed.jpg" alt="Flamamed"/>
+        <img src="assets/hf/clients/academia.jpg" alt="Academia"/>
+        <img src="assets/hf/clients/america_travel.jpg" alt="América Travel"/>
+      </div>
+    </div>
   </div>
 </section>
 
