@@ -1,0 +1,43 @@
+# LINKD · Tarjetas digitales NFC inteligentes · Chile
+
+> LINKD es una marca chilena de tarjetas digitales NFC (Near Field Communication) que reemplazan la tarjeta de presentación tradicional. Con un solo "tap" del celular, comparten un perfil digital con WhatsApp, email, web, redes sociales y vCard descargable. Sin apps, sin escanear QR.
+
+## Producto principal
+
+**Tarjeta digital NFC LINKD**: tarjeta física con chip NFC programable, vinculada a un perfil digital online editable. Cuando alguien acerca su iPhone (iOS 14+) o Android con NFC al chip, su navegador abre el perfil del dueño automáticamente.
+
+### Planes disponibles
+- **Plan Básico** ($29.990 CLP): branding LINKD ambos lados, perfil digital personalizado, update remoto ilimitado, QR de respaldo impreso.
+- **Plan Premium** ($34.990 CLP): diseño custom en un lado + branding LINKD en el otro, asesoría de diseño incluida.
+- **Plan Full personalizado** ($49.990 CLP): diseño custom ambos lados, acabados premium, hasta 3 revisiones de diseño.
+- **Plan Empresas** (cotización): dashboard centralizado + branding corporativo + métricas reales de taps y leads + API CRM.
+
+## Usos / casos de aplicación
+
+LINKD se usa como:
+- **Tarjeta de presentación digital** (profesionales, ejecutivos, freelancers).
+- **Tarjeta de identificación corporativa** para colaboradores de empresas.
+- **Merchandising premium** y regalos corporativos (alternativa moderna al swag tradicional).
+- **Activaciones NFC en eventos** y ferias (caso real: Khipu activó networking NFC con 1.000+ asistentes).
+- **Stand acrílico de reseñas Google** para negocios físicos (un tap deja review automática).
+
+## Stack tecnológico que conecta con LINKD
+
+LINKD integra con: WhatsApp, LinkedIn, Instagram, Meta Ads, Stripe, Shopify, Google Ads, Facebook, ChatGPT, Gemini, Gmail, Outlook, Google Calendar, Microsoft Teams, Claude.
+
+## LINKD Empresas
+
+Servicio B2B con dashboard analytics, branding corporativo consistente, update remoto desde un panel, métricas de taps y leads en tiempo real, API CRM, onboarding rápido (15 días de cotización a equipo activo).
+
+KPIs reales: 85% reducción en costos de impresión, 3.5× contactos efectivos por evento, 2.4× mejora en conversión de leads.
+
+## Contacto
+- WhatsApp: +56 9 7485 0692
+- Email: contacto@linkd.cl
+- Web: https://linkd.cl
+- Instagram: @linkd.cl
+- LinkedIn: linkedin.com/company/tarjetalinkd
+- Dirección: Padre Mariano 82, Of 502, Providencia, Santiago, Chile
+- Horario: Lun a Vie · 8:30 a 18:00 hrs
+
+LINKD es parte de **Grupo Digitals** (https://grupodigitals.com), conglomerado chileno de marcas digitales (Digitals, Hapee, LINKD).
