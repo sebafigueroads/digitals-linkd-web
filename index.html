@@ -103,9 +103,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 }
 @keyframes tap-ping { 0% { box-shadow: 0 0 0 0 rgba(0,113,227,0.6); } 100% { box-shadow: 0 0 0 30px rgba(0,113,227,0); } }
 
-/* === BG atmospheric layers === */
-.bg-grid { position: fixed; inset: 0; z-index: 1; pointer-events: none; background-image: linear-gradient(rgba(244,244,248,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(244,244,248,0.014) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 100% 90% at center, black 30%, transparent); -webkit-mask-image: radial-gradient(ellipse 100% 90% at center, black 30%, transparent); }
-[data-theme="light"] .bg-grid { background-image: linear-gradient(rgba(8,9,12,0.020) 1px, transparent 1px), linear-gradient(90deg, rgba(8,9,12,0.020) 1px, transparent 1px); }
+/* === BG atmospheric layers (sin cuadrícula) === */
 .bg-orb-blue { position: fixed; top: -20%; right: -15%; width: 65vw; height: 65vw; max-width: 1000px; max-height: 1000px; border-radius: 50%; background: radial-gradient(ellipse, rgba(0,113,227,0.20), transparent 60%); filter: blur(80px); pointer-events: none; z-index: 0; }
 .bg-orb-green { position: fixed; bottom: -25%; left: -15%; width: 50vw; height: 50vw; max-width: 800px; max-height: 800px; border-radius: 50%; background: radial-gradient(ellipse, rgba(77,227,140,0.08), transparent 60%); filter: blur(80px); pointer-events: none; z-index: 0; }
 [data-theme="light"] .bg-orb-blue { background: radial-gradient(ellipse, rgba(0,113,227,0.12), transparent 60%); }
@@ -115,7 +113,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 [data-theme="light"] .holo { -webkit-text-stroke-color: rgba(0,113,227,0.18); }
 
 /* === Status bar === */
-.status-bar { position: relative; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 9px clamp(20px, 4vw, 44px); background: var(--bg-2); border-bottom: 1px solid var(--line); font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+.status-bar { position: relative; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 10px clamp(20px, 4vw, 44px); background: var(--bg-2); border-bottom: 1px solid var(--line); font-family: var(--f-body); font-size: 11.5px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink-soft); text-transform: none; }
 .status-bar .led { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 8px var(--signal); animation: ledBlink 1.6s ease-in-out infinite; margin-right: 8px; vertical-align: middle; }
 @keyframes ledBlink { 50% { opacity: 0.35; } }
 .status-bar .right { display: flex; gap: 18px; align-items: center; }
@@ -131,7 +129,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .brand-link img.logo-light { display: none; height: 26px; width: auto; }
 [data-theme="light"] .brand-link img.logo-dark { display: none; }
 [data-theme="light"] .brand-link img.logo-light { display: block; }
-.brand-mark { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: 0.22em; color: var(--ink-mute); font-weight: 600; text-transform: uppercase; padding-left: 12px; border-left: 1px solid var(--line); margin-left: 4px; }
+.brand-mark { font-family: var(--f-body); font-size: 11px; letter-spacing: 0.04em; color: var(--ink-mute); font-weight: 500; padding-left: 12px; border-left: 1px solid var(--line); margin-left: 4px; }
 @media (max-width: 700px) { .brand-mark { display: none; } }
 
 .topbar-nav { display: flex; gap: 28px; font-family: var(--f-body); font-size: 13.5px; font-weight: 500; }
@@ -186,6 +184,117 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .hero-card-rings span:nth-child(2) { width: 70px; height: 70px; animation-delay: 0.4s; }
 .hero-card-rings span:nth-child(3) { width: 100px; height: 100px; animation-delay: 0.8s; }
 @keyframes ring-pulse { 0% { opacity: 0; transform: scale(0.6); } 30% { opacity: 0.9; } 100% { opacity: 0; transform: scale(1.4); } }
+
+/* ============================================================
+   TAP RENDER · LINKD card tapping an iPhone
+   ============================================================ */
+.tap-render { position: relative; width: 100%; height: 100%; max-height: 640px; aspect-ratio: 0.78/1; display: grid; place-items: center; z-index: 3; perspective: 1800px; }
+
+/* Glow behind the whole render */
+.tap-render::before { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 90%; height: 70%; background: radial-gradient(ellipse at 50% 45%, rgba(0,113,227,0.50), transparent 65%); filter: blur(60px); z-index: -1; }
+.tap-render::after { content: ''; position: absolute; left: 50%; top: 75%; transform: translate(-50%,-50%); width: 70%; height: 18%; background: radial-gradient(ellipse, rgba(77,227,140,0.30), transparent 70%); filter: blur(50px); z-index: -1; }
+[data-theme="light"] .tap-render::before { background: radial-gradient(ellipse at 50% 45%, rgba(0,113,227,0.22), transparent 65%); }
+
+/* The iPhone */
+.tap-phone { position: relative; width: 64%; max-width: 290px; aspect-ratio: 290/590; border-radius: 42px; background: linear-gradient(165deg, #1a1d24, #08090c 70%); padding: 11px; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7), 0 0 40px -10px rgba(0,113,227,0.25), inset 0 0 0 1.5px rgba(255,255,255,0.10); transform: rotate(-3deg) translateY(20px); transform-style: preserve-3d; animation: phoneFloat 6s ease-in-out infinite; z-index: 2; }
+[data-theme="light"] .tap-phone { background: linear-gradient(165deg, #f0f0f2, #d6d6db 70%); box-shadow: 0 50px 100px -20px rgba(0,0,0,0.30), 0 0 40px -10px rgba(0,113,227,0.20), inset 0 0 0 1.5px rgba(255,255,255,0.70); }
+@keyframes phoneFloat { 50% { transform: rotate(-3deg) translateY(12px); } }
+.tap-phone-shell { position: relative; width: 100%; height: 100%; background: #08090c; border-radius: 32px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
+.tap-phone-notch { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 33%; height: 22px; background: #08090c; border-radius: 100px; z-index: 10; }
+.tap-phone-notch::after { content: ''; position: absolute; right: 14%; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background: #1a1d28; box-shadow: 0 0 0 1.5px #0f1218, inset 0 0 0 1px rgba(0,113,227,0.5); }
+.tap-phone-home { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); width: 36%; height: 4px; background: rgba(255,255,255,0.42); border-radius: 100px; z-index: 10; }
+.tap-phone-reflection { position: absolute; left: 0; right: 0; top: 0; bottom: 0; border-radius: 42px; background: linear-gradient(125deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%); pointer-events: none; z-index: 5; }
+
+.tap-phone-screen { position: relative; width: 100%; height: 100%; background: linear-gradient(180deg, #0a0d14 0%, #0F1116 100%); border-radius: 32px; overflow: hidden; }
+[data-theme="light"] .tap-phone-screen { background: linear-gradient(180deg, #FFFFFF 0%, #F5F6F8 100%); color: #08090c; }
+
+.tps-status { position: absolute; top: 0; left: 0; right: 0; height: 38px; display: flex; justify-content: space-between; align-items: center; padding: 13px 22px 0; z-index: 6; font-family: var(--f-body); font-weight: 600; font-size: 11px; color: var(--ink); }
+[data-theme="light"] .tps-status { color: #08090c; }
+.tps-icons { display: flex; gap: 5px; align-items: center; }
+.tps-icons svg { width: 13px; height: 9px; opacity: 0.85; }
+.tps-icons svg:last-child { width: 22px; height: 11px; }
+
+/* NFC tap reveal en pantalla cuando la card "tapea" */
+.tps-tap-reveal { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); display: grid; place-items: center; z-index: 7; pointer-events: none; opacity: 0; animation: tapReveal 5.5s ease-in-out infinite; }
+.tps-tap-wave { position: absolute; width: 80px; height: 80px; border: 2px solid var(--blue-bright); border-radius: 50%; opacity: 0; animation: tapWave 5.5s ease-in-out infinite; }
+.tps-tap-wave:nth-child(2) { animation-delay: 0.18s; }
+.tps-tap-label { position: relative; padding: 7px 14px; background: rgba(0,113,227,0.96); color: #fff; font-family: var(--f-body); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; border-radius: 100px; box-shadow: 0 8px 24px rgba(0,113,227,0.50); white-space: nowrap; }
+@keyframes tapReveal { 28%, 42% { opacity: 1; } 0%, 18%, 52%, 100% { opacity: 0; } }
+@keyframes tapWave { 28% { opacity: 0.85; transform: scale(0.4); } 48% { opacity: 0; transform: scale(2); } 0%, 100% { opacity: 0; transform: scale(0.4); } }
+
+/* Profile fades in after tap */
+.tps-profile { position: absolute; inset: 38px 0 0; padding: 8px 14px 14px; display: flex; flex-direction: column; align-items: center; opacity: 0; transform: translateY(8px); animation: profileIn 5.5s ease-in-out infinite; }
+@keyframes profileIn { 0%, 42% { opacity: 0; transform: translateY(8px); } 52%, 92% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; } }
+
+.tps-cover { width: calc(100% + 28px); margin: -2px -14px 0; height: 60px; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-bright) 50%, var(--signal) 100%); position: relative; overflow: hidden; }
+.tps-cover::after { content: ''; position: absolute; right: -10%; top: -40%; width: 60%; height: 180%; background: radial-gradient(circle, rgba(255,255,255,0.32), transparent 60%); filter: blur(8px); }
+.tps-avatar { width: 56px; height: 56px; margin-top: -28px; border-radius: 50%; background: linear-gradient(135deg, #4a4fff, #0071e3); display: grid; place-items: center; border: 3px solid var(--bg-2); position: relative; overflow: hidden; box-shadow: 0 8px 18px rgba(0,113,227,0.36); z-index: 2; }
+[data-theme="light"] .tps-avatar { border-color: #fff; }
+.tps-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.tps-avatar-initials { color: #fff; font-family: var(--f-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.tps-avatar.no-img img { display: none; }
+
+.tps-name { margin-top: 8px; font-family: var(--f-display); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; color: var(--ink); line-height: 1.1; }
+.tps-title { margin-top: 2px; font-family: var(--f-body); font-weight: 500; font-size: 10px; color: var(--ink-soft); }
+.tps-handle { margin-top: 4px; font-family: var(--f-body); font-weight: 500; font-size: 9px; color: var(--blue-bright); letter-spacing: 0.01em; }
+
+.tps-actions { display: flex; gap: 6px; margin-top: 12px; width: 100%; }
+.tps-act { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 7px 6px; border-radius: 8px; font-family: var(--f-body); font-weight: 700; font-size: 9.5px; color: #fff; letter-spacing: 0.01em; }
+.tps-act svg { width: 11px; height: 11px; }
+.tps-wa { background: #25D366; box-shadow: 0 6px 12px -4px rgba(37,211,102,0.45); }
+.tps-save { background: var(--blue); box-shadow: 0 6px 12px -4px rgba(0,113,227,0.45); }
+
+.tps-links { width: 100%; margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
+.tps-link { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: var(--bg-3); border-radius: 8px; font-family: var(--f-body); font-size: 9.5px; color: var(--ink-soft); }
+[data-theme="light"] .tps-link { background: #F0F1F4; color: #4A4D58; }
+.tps-link span:nth-child(2) { flex: 1; font-weight: 600; color: var(--ink); font-size: 10px; }
+[data-theme="light"] .tps-link span:nth-child(2) { color: #08090c; }
+.tps-link-cta { color: var(--blue-bright); font-weight: 700; font-size: 9px; }
+.tps-link-ico { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
+.tps-ig { background: linear-gradient(135deg, #FF6B6B 0%, #C13584 50%, #833AB4 100%); }
+.tps-li { background: #0A66C2; }
+.tps-web { background: linear-gradient(135deg, var(--blue-bright), var(--signal)); }
+
+.tps-foot { margin-top: auto; padding-top: 10px; display: flex; align-items: center; gap: 6px; font-family: var(--f-body); font-size: 8.5px; color: var(--ink-mute); letter-spacing: 0.02em; opacity: 0.7; }
+.tps-foot-mark { width: 14px; height: 14px; background: var(--ink); color: var(--bg); display: grid; place-items: center; font-family: var(--f-display); font-weight: 800; font-size: 9px; border-radius: 3px; }
+[data-theme="light"] .tps-foot-mark { background: var(--blue); color: #fff; }
+
+/* === LINKD NFC card · viene de arriba y "tapea" === */
+.tap-card { position: absolute; top: 0; left: 50%; width: 56%; max-width: 240px; aspect-ratio: 1.6/1; border-radius: 16px; transform-origin: center; transform: translateX(-50%) translateY(-30%) rotate(-6deg); z-index: 4; animation: cardTap 5.5s ease-in-out infinite; will-change: transform; filter: drop-shadow(0 22px 30px rgba(0,0,0,0.5)); }
+@keyframes cardTap {
+  0%, 100% { transform: translateX(-50%) translateY(-32%) rotate(-6deg) scale(1); }
+  18% { transform: translateX(-50%) translateY(-22%) rotate(-7deg) scale(1.02); }
+  30% { transform: translateX(-50%) translateY(-10%) rotate(-5deg) scale(1); }
+  40% { transform: translateX(-50%) translateY(-12%) rotate(-5deg) scale(1); }
+  55% { transform: translateX(-50%) translateY(-22%) rotate(-7deg) scale(1.02); }
+  85% { transform: translateX(-50%) translateY(-30%) rotate(-6deg) scale(1); }
+}
+.tap-card-face { position: relative; width: 100%; height: 100%; background: linear-gradient(135deg, #08090C 0%, #15181F 70%, #1A1E26 100%); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 4px 12px rgba(0,113,227,0.30); overflow: hidden; }
+.tap-card-face::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top right, rgba(0,113,227,0.20), transparent 60%); pointer-events: none; }
+.tap-card-face::after { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(125deg, transparent 60%, rgba(255,255,255,0.06) 70%, transparent 80%); pointer-events: none; }
+.tap-card-brand { display: flex; align-items: center; gap: 7px; position: relative; z-index: 2; }
+.tap-card-mark { width: 26px; height: 26px; background: var(--blue); color: #fff; display: grid; place-items: center; font-family: var(--f-display); font-weight: 800; font-size: 14px; border-radius: 6px; box-shadow: 0 6px 14px -2px rgba(0,113,227,0.55); }
+.tap-card-word { font-family: var(--f-display); font-weight: 700; font-size: 18px; letter-spacing: -0.025em; color: #fff; }
+.tap-card-chip { display: flex; justify-content: flex-end; position: relative; z-index: 2; color: var(--blue-bright); }
+.tap-card-chip svg { width: 28px; height: 28px; }
+.tap-card-meta { display: flex; flex-direction: column; gap: 2px; position: relative; z-index: 2; font-family: var(--f-body); font-size: 8.5px; color: var(--ink-soft); font-weight: 500; letter-spacing: 0.04em; }
+.tap-card-meta span:first-child { font-weight: 700; color: var(--blue-bright); letter-spacing: 0.12em; text-transform: uppercase; font-size: 8px; }
+
+/* NFC ping radiating from contact point */
+.tap-ping { position: absolute; top: 24%; left: 50%; transform: translateX(-50%); width: 0; height: 0; z-index: 6; pointer-events: none; }
+.tap-ping span { position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border: 2px solid var(--signal); border-radius: 50%; opacity: 0; animation: pingRadiate 5.5s ease-out infinite; }
+.tap-ping span:nth-child(2) { animation-delay: 0.18s; }
+.tap-ping span:nth-child(3) { animation-delay: 0.36s; }
+@keyframes pingRadiate { 28% { opacity: 1; transform: scale(0.2); } 42% { opacity: 0; transform: scale(2.2); } 0%, 100% { opacity: 0; transform: scale(0.2); } }
+
+/* Responsive · render mantiene proporción en mobile */
+@media (max-width: 980px) { .tap-render { max-height: 540px; max-width: 380px; margin: 0 auto; } }
+@media (max-width: 600px) { .tap-render { max-height: 480px; max-width: 320px; } }
+@media (max-width: 380px) { .tap-render { max-height: 440px; max-width: 280px; } }
+@media (prefers-reduced-motion: reduce) {
+  .tap-card, .tap-phone, .tap-ping span, .tps-tap-reveal, .tps-profile, .tps-tap-wave { animation: none !important; }
+  .tps-profile { opacity: 1; transform: none; }
+}
 
 .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 50px; padding-top: 32px; border-top: 1px solid var(--line); }
 .hero-stat .num { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1; color: var(--ink); letter-spacing: -0.022em; padding-block: 0.04em; }
@@ -351,22 +460,31 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 
 .orbita-logo {
   position: absolute;
-  width: 56px; height: 56px;
+  width: 60px; height: 60px;
   background: var(--bg-card);
   border: 1px solid var(--line-strong);
   border-radius: 14px;
   display: grid; place-items: center;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.32);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.36);
   transition: transform 0.4s var(--ease), border-color 0.3s, box-shadow 0.3s;
   z-index: 5;
+  transform: translate(-50%, -50%);
 }
-[data-theme="light"] .orbita-logo { box-shadow: 0 10px 26px rgba(0,0,0,0.10); }
-.orbita-logo:hover { transform: translate(-50%, -50%) scale(1.15) !important; border-color: var(--blue-bright); box-shadow: 0 20px 40px rgba(0,113,227,0.35); z-index: 20; }
-.orbita-logo img { max-width: 70%; max-height: 70%; object-fit: contain; }
-.orbita-logo .tip { position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); padding: 4px 9px; background: var(--ink); color: var(--bg); font-family: var(--f-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; border-radius: 100px; white-space: nowrap; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
+.orbita-logo.o-in { width: 48px; height: 48px; border-radius: 11px; }
+[data-theme="light"] .orbita-logo { box-shadow: 0 10px 26px rgba(0,0,0,0.10); background: #fff; }
+.orbita-logo:hover { transform: translate(-50%, -50%) scale(1.18); border-color: var(--blue-bright); box-shadow: 0 22px 42px rgba(0,113,227,0.40); z-index: 20; }
+.orbita-logo img { max-width: 64%; max-height: 64%; object-fit: contain; }
+.orbita-logo .tip { position: absolute; bottom: -26px; left: 50%; transform: translateX(-50%); padding: 4px 9px; background: var(--ink); color: var(--bg); font-family: var(--f-body); font-size: 10px; font-weight: 600; letter-spacing: 0.01em; border-radius: 100px; white-space: nowrap; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
 .orbita-logo:hover .tip { opacity: 1; }
-@media (max-width: 720px) { .orbita-logo { width: 44px; height: 44px; border-radius: 10px; } .orbita-logo .tip { font-size: 8px; bottom: -22px; padding: 3px 7px; } }
-@media (max-width: 480px) { .orbita-logo { width: 36px; height: 36px; border-radius: 8px; } }
+@media (max-width: 720px) {
+  .orbita-logo { width: 46px; height: 46px; border-radius: 11px; }
+  .orbita-logo.o-in { width: 38px; height: 38px; border-radius: 9px; }
+  .orbita-logo .tip { display: none; }
+}
+@media (max-width: 480px) {
+  .orbita-logo { width: 38px; height: 38px; border-radius: 9px; }
+  .orbita-logo.o-in { width: 32px; height: 32px; border-radius: 8px; }
+}
 
 .orbita-cta { margin-top: 60px; display: inline-flex; flex-direction: column; align-items: center; gap: 14px; }
 .orbita-cta p { font-size: 0.95rem; color: var(--ink-soft); max-width: 50ch; }
@@ -484,15 +602,19 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 
 /* === Footer === */
 .foot { padding: 60px clamp(20px, 5vw, 60px) 30px; background: var(--bg-2); border-top: 1px solid var(--line); position: relative; z-index: 5; }
-.foot-grid { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 36px; }
+.foot-grid { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.1fr; gap: 36px; }
 @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 540px) { .foot-grid { grid-template-columns: 1fr; } }
 .foot-brand img.logo-dark { display: block; height: 32px; margin-bottom: 18px; }
 .foot-brand img.logo-light { display: none; height: 32px; margin-bottom: 18px; }
 [data-theme="light"] .foot-brand img.logo-dark { display: none; }
 [data-theme="light"] .foot-brand img.logo-light { display: block; }
-.foot-brand p { font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); max-width: 38ch; }
-.foot-col h6 { font-family: var(--f-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 14px; }
+.foot-brand p { font-size: 0.9rem; line-height: 1.65; color: var(--ink-soft); max-width: 38ch; margin-bottom: 22px; }
+.foot-social { display: inline-flex; gap: 10px; align-items: center; }
+.foot-social a { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--bg-2); border: 1px solid var(--line); color: var(--ink-soft); transition: all 0.25s var(--ease); }
+.foot-social a:hover { background: var(--blue); border-color: var(--blue); color: #fff; transform: translateY(-2px); }
+.foot-social svg { width: 17px; height: 17px; }
+.foot-col h6 { font-family: var(--f-body); font-size: 12.5px; font-weight: 700; letter-spacing: 0.02em; color: var(--ink); margin-bottom: 14px; }
 .foot-col ul { list-style: none; display: grid; gap: 8px; font-size: 0.9rem; color: var(--ink-soft); }
 .foot-col a { transition: color 0.25s; }
 .foot-col a:hover { color: var(--blue-bright); }
@@ -505,13 +627,13 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 
 /* Parte de Grupo Digitals */
 .foot-group { max-width: 1380px; margin: 32px auto 0; padding: 22px clamp(0, 4vw, 0); display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.foot-group .label { font-family: var(--f-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-mute); }
+.foot-group .label { font-family: var(--f-body); font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-mute); }
 .foot-group img { height: 44px; width: auto; opacity: 0.88; transition: opacity 0.3s; filter: invert(0); }
 [data-theme="light"] .foot-group img { filter: none; }
 :root:not([data-theme]) .foot-group img { filter: invert(1) brightness(1.05); }
 .foot-group img:hover { opacity: 1; }
 
-.foot-bottom { max-width: 1380px; margin: 22px auto 0; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-mute); }
+.foot-bottom { max-width: 1380px; margin: 22px auto 0; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--f-body); font-size: 12.5px; font-weight: 500; letter-spacing: 0.01em; color: var(--ink-mute); }
 
 /* === WhatsApp === */
 .wa-widget { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 58px; height: 58px; background: #25D366; display: grid; place-items: center; border-radius: 50%; box-shadow: 0 14px 32px rgba(37,211,102,0.4); transition: transform 0.25s ease; animation: waPulse 2.4s infinite; }
@@ -525,39 +647,36 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 <body>
 
 <div class="cursor-main" id="cursor"></div>
-<div class="bg-grid"></div>
 <div class="bg-orb-blue"></div>
 <div class="bg-orb-green"></div>
 
 <div class="status-bar">
-  <span><span class="led"></span>NFC ACTIVO · TAP & SHARE · SIN APPS</span>
+  <span><span class="led"></span>NFC activo · tap &amp; share, sin apps</span>
   <div class="right">
-    <span>● 3 PLANES · BÁSICO · INTERMEDIO · FULL</span>
+    <span>3 planes · Básico, Intermedio &amp; Full</span>
     <span>Despacho nacional · Chile</span>
-    <span>2026</span>
   </div>
 </div>
 
 <header class="topbar" id="topbar">
-  <a href="#" class="brand-link" aria-label="LINKD">
+  <a href="https://linkd.cl/" class="brand-link" aria-label="LINKD">
     <img class="logo-dark" src="assets/logo/linkd-logo-white.png" alt="LINKD"/>
     <img class="logo-light" src="assets/logo/linkd-logo-black.png" alt="LINKD"/>
   </a>
   <nav class="topbar-nav">
-    <a href="#como">Cómo funciona</a>
-    <a href="#productos">Productos</a>
-    <a href="#orbita">Integraciones</a>
-    <a href="#showcase">Galería</a>
-    <a href="#stand">Stand reseñas</a>
-    <a href="#beneficios">Beneficios</a>
-    <a href="#faq">FAQ</a>
+    <a href="#tarjetas">Tarjetas</a>
+    <a href="#productos">Planes</a>
+    <a href="#reviews">Reseñas</a>
+    <a href="https://linkd.cl/shop/">Tienda</a>
+    <a href="https://linkd.cl/empresas/">Empresas</a>
+    <a href="#contacto">Contacto</a>
   </nav>
   <div class="topbar-actions">
     <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro" type="button">
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
     </button>
-    <a href="#productos" class="topbar-cta">Comprar →</a>
+    <a href="https://linkd.cl/shop/" class="topbar-cta">Comprar →</a>
   </div>
 </header>
 
@@ -584,8 +703,86 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
       </div>
     </div>
     <div class="hero-card-wrap" id="heroCardWrap">
-      <div class="hero-card" id="heroCard">
-        <img src="assets/hf/hero.png" alt="LINKD · tarjeta NFC junto a celular mostrando perfil digital"/>
+      <div class="tap-render" id="tapRender" aria-label="Tarjeta LINKD haciendo tap a un celular">
+        <!-- NFC ping radiando -->
+        <div class="tap-ping" aria-hidden="true"><span></span><span></span><span></span></div>
+
+        <!-- LINKD card (negro mate · viene de arriba) -->
+        <div class="tap-card" aria-hidden="true">
+          <div class="tap-card-face front">
+            <div class="tap-card-brand">
+              <span class="tap-card-mark">L</span>
+              <span class="tap-card-word">linkd</span>
+            </div>
+            <div class="tap-card-chip">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="16" cy="16" r="3"/><path d="M16 8v3M16 21v3M8 16h3M21 16h3M10.5 10.5l2.1 2.1M19.4 19.4l2.1 2.1M10.5 21.5l2.1-2.1M19.4 12.6l2.1-2.1"/></svg>
+            </div>
+            <div class="tap-card-meta">
+              <span>Tap to share</span>
+              <span class="tap-card-nfc">NFC · 13.56 MHz</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- iPhone -->
+        <div class="tap-phone" aria-hidden="true">
+          <div class="tap-phone-shell">
+            <div class="tap-phone-notch"></div>
+            <div class="tap-phone-screen">
+              <!-- Status bar fake -->
+              <div class="tps-status">
+                <span class="tps-time">9:41</span>
+                <span class="tps-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><rect x="0" y="9" width="2" height="4" rx="0.4"/><rect x="3.5" y="6" width="2" height="7" rx="0.4"/><rect x="7" y="3" width="2" height="10" rx="0.4"/><rect x="10.5" y="0" width="2" height="13" rx="0.4"/></svg>
+                  <svg viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="1" y="1" width="20" height="10" rx="2.4"/><rect x="22" y="4" width="1.5" height="4" rx="0.4" fill="currentColor"/><rect x="2.5" y="2.5" width="14" height="7" rx="1" fill="currentColor"/></svg>
+                </span>
+              </div>
+
+              <!-- NFC tap reveal -->
+              <div class="tps-tap-reveal">
+                <span class="tps-tap-wave"></span>
+                <span class="tps-tap-wave"></span>
+                <span class="tps-tap-label">NFC detectado</span>
+              </div>
+
+              <!-- Profile -->
+              <div class="tps-profile">
+                <div class="tps-cover"></div>
+                <div class="tps-avatar">
+                  <img src="assets/hf/avatar-camila.jpg" alt="" onerror="this.style.display='none'; this.parentNode.classList.add('no-img');"/>
+                  <span class="tps-avatar-initials">CR</span>
+                </div>
+                <div class="tps-name">Camila Rojas</div>
+                <div class="tps-title">Brand Lead · Digitals</div>
+                <div class="tps-handle">linkd.cl/camila-rojas</div>
+
+                <div class="tps-actions">
+                  <a class="tps-act tps-wa">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C9.8 8.7 9.2 7.2 9 6.6c-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4S8 11.7 8.2 12c.2.3 2 3.1 5 4.2.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3"/></svg>
+                    <span>WhatsApp</span>
+                  </a>
+                  <a class="tps-act tps-save">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-7a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v7M12 2v6M9 5l3-3 3 3"/></svg>
+                    <span>Guardar</span>
+                  </a>
+                </div>
+
+                <div class="tps-links">
+                  <div class="tps-link"><span class="tps-link-ico tps-ig"></span><span>@camila.digitals</span><span class="tps-link-cta">Ver →</span></div>
+                  <div class="tps-link"><span class="tps-link-ico tps-li"></span><span>Camila Rojas</span><span class="tps-link-cta">Ver →</span></div>
+                  <div class="tps-link"><span class="tps-link-ico tps-web"></span><span>digitals.cl</span><span class="tps-link-cta">Abrir →</span></div>
+                </div>
+
+                <div class="tps-foot">
+                  <span class="tps-foot-mark">L</span>
+                  <span>linkd · perfil digital</span>
+                </div>
+              </div>
+            </div>
+            <div class="tap-phone-home"></div>
+          </div>
+          <div class="tap-phone-reflection"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -669,7 +866,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
             <li>QR de respaldo impreso</li>
             <li class="muted">Sin diseño custom</li>
           </ul>
-          <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20B%C3%A1sico" target="_blank" rel="noopener" class="btn-buy">Comprar Básico →</a>
+          <a href="https://linkd.cl/producto/tarjeta-linkd-plan-basico/" target="_blank" rel="noopener" class="btn-buy">Comprar Básico →</a>
         </div>
       </article>
 
@@ -694,7 +891,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
             <li>Pruebas digitales antes de imprimir</li>
             <li>Update remoto ilimitado</li>
           </ul>
-          <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20Intermedio" target="_blank" rel="noopener" class="btn-buy">Comprar Intermedio →</a>
+          <a href="https://linkd.cl/producto/tarjeta-linkd-plan-premium/" target="_blank" rel="noopener" class="btn-buy">Comprar Intermedio →</a>
         </div>
       </article>
 
@@ -719,7 +916,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
             <li>Perfil digital con branding propio</li>
             <li>Soporte prioritario</li>
           </ul>
-          <a href="https://wa.me/56961607102?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20Full%20Personalizado" target="_blank" rel="noopener" class="btn-buy">Comprar Full →</a>
+          <a href="https://wa.me/56974850692?text=Hola%2C%20quiero%20comprar%20LINKD%20plan%20Full%20Personalizado" target="_blank" rel="noopener" class="btn-buy">Comprar Full →</a>
         </div>
       </article>
 
@@ -750,7 +947,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
             <li>Reportes ejecutivos mensuales</li>
             <li>Onboarding técnico incluido</li>
           </ul>
-          <a href="https://wa.me/56961607102?text=Hola%2C%20me%20interesa%20LINKD%20Enterprise%20%C2%B7%20Dashboard%20%2B%20CRM%20API" target="_blank" rel="noopener" class="btn-buy">Cotizar Enterprise →</a>
+          <a href="https://linkd.cl/empresas/" target="_blank" rel="noopener" class="btn-buy">Ver plan Empresas →</a>
         </div>
       </article>
 
@@ -784,7 +981,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
         </div>
       </div>
       <div class="hero-row">
-        <a href="https://wa.me/56961607102?text=Hola%2C%20me%20interesa%20el%20stand%20de%20rese%C3%B1as%20LINKD" target="_blank" rel="noopener" class="btn-primary">Cotizar stand →</a>
+        <a href="https://linkd.cl/producto/tarjeta-nfc-para-resenas-en-google-my-business/" target="_blank" rel="noopener" class="btn-primary">Comprar stand →</a>
       </div>
     </div>
   </div>
@@ -808,25 +1005,23 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
         <img src="assets/logo/linkd-logo-white.png" alt="LINKD core"/>
       </div>
 
-      <!-- Logos en orbit position absoluta -->
-      <div class="orbita-logo" style="top:8%; left:50%; transform: translate(-50%, -50%);" data-tip="WhatsApp"><img src="assets/orbita/whatsapp.png" alt="WhatsApp"/><span class="tip">WhatsApp</span></div>
-      <div class="orbita-logo" style="top:18%; left:82%; transform: translate(-50%, -50%);" data-tip="LinkedIn"><img src="assets/orbita/linkedin.png" alt="LinkedIn"/><span class="tip">LinkedIn</span></div>
-      <div class="orbita-logo" style="top:50%; left:96%; transform: translate(-50%, -50%);" data-tip="Instagram"><img src="assets/orbita/instagram.png" alt="Instagram"/><span class="tip">Instagram</span></div>
-      <div class="orbita-logo" style="top:82%; left:82%; transform: translate(-50%, -50%);" data-tip="Meta Ads"><img src="assets/orbita/meta.png" alt="Meta"/><span class="tip">Meta Ads</span></div>
-      <div class="orbita-logo" style="top:92%; left:50%; transform: translate(-50%, -50%);" data-tip="Stripe"><img src="assets/orbita/stripe.png" alt="Stripe"/><span class="tip">Stripe</span></div>
-      <div class="orbita-logo" style="top:82%; left:18%; transform: translate(-50%, -50%);" data-tip="Shopify"><img src="assets/orbita/shopify.png" alt="Shopify"/><span class="tip">Shopify</span></div>
-      <div class="orbita-logo" style="top:50%; left:4%; transform: translate(-50%, -50%);" data-tip="Google Ads"><img src="assets/orbita/google-ads.png" alt="Google Ads"/><span class="tip">Google Ads</span></div>
-      <div class="orbita-logo" style="top:18%; left:18%; transform: translate(-50%, -50%);" data-tip="Facebook"><img src="assets/orbita/facebook.png" alt="Facebook"/><span class="tip">Facebook</span></div>
+      <!-- Outer ring · 8 logos a 45° = radio 48% · social + comercio -->
+      <div class="orbita-logo o-out" style="top:2%;  left:50%;" data-tip="WhatsApp"><img src="assets/orbita/whatsapp.png" alt="WhatsApp"/><span class="tip">WhatsApp</span></div>
+      <div class="orbita-logo o-out" style="top:16%; left:84%;" data-tip="LinkedIn"><img src="assets/orbita/linkedin.png" alt="LinkedIn"/><span class="tip">LinkedIn</span></div>
+      <div class="orbita-logo o-out" style="top:50%; left:98%;" data-tip="Instagram"><img src="assets/orbita/instagram.png" alt="Instagram"/><span class="tip">Instagram</span></div>
+      <div class="orbita-logo o-out" style="top:84%; left:84%;" data-tip="Meta Ads"><img src="assets/orbita/meta.png" alt="Meta"/><span class="tip">Meta Ads</span></div>
+      <div class="orbita-logo o-out" style="top:98%; left:50%;" data-tip="Stripe"><img src="assets/orbita/stripe.png" alt="Stripe"/><span class="tip">Stripe</span></div>
+      <div class="orbita-logo o-out" style="top:84%; left:16%;" data-tip="Shopify"><img src="assets/orbita/shopify.png" alt="Shopify"/><span class="tip">Shopify</span></div>
+      <div class="orbita-logo o-out" style="top:50%; left:2%;"  data-tip="Google Ads"><img src="assets/orbita/google-ads.png" alt="Google Ads"/><span class="tip">Google Ads</span></div>
+      <div class="orbita-logo o-out" style="top:16%; left:16%;" data-tip="Facebook"><img src="assets/orbita/facebook.png" alt="Facebook"/><span class="tip">Facebook</span></div>
 
-      <!-- Ring inner -->
-      <div class="orbita-logo" style="top:24%; left:38%; transform: translate(-50%, -50%);" data-tip="ChatGPT"><img src="assets/orbita/chatgpt.png" alt="ChatGPT"/><span class="tip">ChatGPT</span></div>
-      <div class="orbita-logo" style="top:24%; left:62%; transform: translate(-50%, -50%);" data-tip="Claude"><img src="assets/orbita/claude.png" alt="Claude"/><span class="tip">Claude</span></div>
-      <div class="orbita-logo" style="top:50%; left:24%; transform: translate(-50%, -50%);" data-tip="Gmail"><img src="assets/orbita/gmail.png" alt="Gmail"/><span class="tip">Gmail</span></div>
-      <div class="orbita-logo" style="top:50%; left:76%; transform: translate(-50%, -50%);" data-tip="Outlook"><img src="assets/orbita/outlook.png" alt="Outlook"/><span class="tip">Outlook</span></div>
-      <div class="orbita-logo" style="top:76%; left:38%; transform: translate(-50%, -50%);" data-tip="Google Calendar"><img src="assets/orbita/gcalendar.png" alt="Google Calendar"/><span class="tip">G. Calendar</span></div>
-      <div class="orbita-logo" style="top:76%; left:62%; transform: translate(-50%, -50%);" data-tip="Microsoft Teams"><img src="assets/orbita/teams.png" alt="Teams"/><span class="tip">Teams</span></div>
-      <div class="orbita-logo" style="top:38%; left:50%; transform: translate(-50%, -50%);" data-tip="Gemini"><img src="assets/orbita/gemini.png" alt="Gemini"/><span class="tip">Gemini</span></div>
-      <div class="orbita-logo" style="top:62%; left:50%; transform: translate(-50%, -50%);" data-tip="ElevenLabs"><img src="assets/orbita/elevenlabs.png" alt="ElevenLabs"/><span class="tip">ElevenLabs</span></div>
+      <!-- Inner ring · 6 logos offset 30° = radio 28% · IA + productividad (sin tapar core) -->
+      <div class="orbita-logo o-in" style="top:26%; left:64%;" data-tip="ChatGPT"><img src="assets/orbita/chatgpt.png" alt="ChatGPT"/><span class="tip">ChatGPT</span></div>
+      <div class="orbita-logo o-in" style="top:50%; left:78%;" data-tip="Gemini"><img src="assets/orbita/gemini.png" alt="Gemini"/><span class="tip">Gemini</span></div>
+      <div class="orbita-logo o-in" style="top:74%; left:64%;" data-tip="Outlook"><img src="assets/orbita/outlook.png" alt="Outlook"/><span class="tip">Outlook</span></div>
+      <div class="orbita-logo o-in" style="top:74%; left:36%;" data-tip="Microsoft Teams"><img src="assets/orbita/teams.png" alt="Teams"/><span class="tip">Teams</span></div>
+      <div class="orbita-logo o-in" style="top:50%; left:22%;" data-tip="Gmail"><img src="assets/orbita/gmail.png" alt="Gmail"/><span class="tip">Gmail</span></div>
+      <div class="orbita-logo o-in" style="top:26%; left:36%;" data-tip="Claude"><img src="assets/orbita/claude.png" alt="Claude"/><span class="tip">Claude</span></div>
     </div>
 
     <div class="orbita-cta reveal-up">
@@ -1018,7 +1213,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
           <h2>Pásate a <span class="italic">LINKD</span> hoy.</h2>
           <p>Elige tu plan, completa tu perfil y la tarjeta llega lista a tu casa u oficina. Networking profesional, sin imprenta, sin desperdicio.</p>
           <div class="cta-row">
-            <a href="https://wa.me/56961607102?text=Hola%20LINKD%2C%20quiero%20comprar%20una%20tarjeta%20NFC" target="_blank" rel="noopener" class="cta-btn-primary">WhatsApp +56 9 6160 7102 →</a>
+            <a href="https://wa.me/56974850692?text=Hola%20LINKD%2C%20quiero%20comprar%20una%20tarjeta%20NFC" target="_blank" rel="noopener" class="cta-btn-primary">WhatsApp +56 9 7485 0692 →</a>
             <a href="#productos" class="cta-btn-ghost">Ver los 3 planes</a>
           </div>
         </div>
@@ -1043,32 +1238,39 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
       <img class="logo-dark" src="assets/logo/linkd-logo-white.png" alt="LINKD"/>
       <img class="logo-light" src="assets/logo/linkd-logo-black.png" alt="LINKD"/>
       <p>Tarjetas de presentación NFC inteligentes · perfiles digitales que evolucionan con tu carrera. Diseño y despacho desde Chile.</p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/linkd.cl/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.6c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-10.4c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/></svg></a>
+        <a href="https://www.linkedin.com/company/tarjetalinkd/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.7H9.2V8.9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.2 7.3c-1.2 0-2.1-.9-2.1-2.1s.9-2.1 2.1-2.1c1.2 0 2.1.9 2.1 2.1s-.9 2.1-2.1 2.1zm1.8 13.1H3.4V8.9H7v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></svg></a>
+        <a href="https://wa.me/56974850692?text=Hola%20LINKD" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C9.8 8.7 9.2 7.2 9 6.6c-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4S8 11.7 8.2 12c.2.3 2 3.1 5 4.2.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg></a>
+      </div>
     </div>
     <div class="foot-col">
-      <h6>Productos</h6>
+      <h6>Tarjetas</h6>
       <ul>
-        <li><a href="#productos">Plan Básico</a></li>
-        <li><a href="#productos">Plan Intermedio</a></li>
-        <li><a href="#productos">Plan Full personalizado</a></li>
-        <li><a href="#stand">Stand de reseñas</a></li>
+        <li><a href="https://linkd.cl/producto/tarjeta-linkd-plan-basico/" target="_blank" rel="noopener">Plan Básico</a></li>
+        <li><a href="https://linkd.cl/producto/tarjeta-linkd-plan-premium/" target="_blank" rel="noopener">Plan Premium</a></li>
+        <li><a href="https://linkd.cl/producto/tarjeta-nfc-para-resenas-en-google-my-business/" target="_blank" rel="noopener">Stand de reseñas Google</a></li>
+        <li><a href="https://linkd.cl/empresas/" target="_blank" rel="noopener">Soluciones Enterprise</a></li>
       </ul>
     </div>
     <div class="foot-col">
-      <h6>Información</h6>
+      <h6>Linkd</h6>
       <ul>
-        <li><a href="#como">Cómo funciona</a></li>
-        <li><a href="#beneficios">Beneficios</a></li>
-        <li><a href="#faq">Preguntas frecuentes</a></li>
-        <li><a href="#cotizar">Cotizar</a></li>
+        <li><a href="https://linkd.cl/" target="_blank" rel="noopener">Inicio</a></li>
+        <li><a href="https://linkd.cl/shop/" target="_blank" rel="noopener">Tienda</a></li>
+        <li><a href="https://linkd.cl/empresas/" target="_blank" rel="noopener">Empresas</a></li>
+        <li><a href="https://linkd.cl/carrito/" target="_blank" rel="noopener">Mi carrito</a></li>
+        <li><a href="#reviews">Reseñas de clientes</a></li>
       </ul>
     </div>
     <div class="foot-col">
       <h6>Contacto</h6>
       <ul>
-        <li>WhatsApp +56 9 6160 7102</li>
-        <li>contacto@linkd.cl</li>
-        <li>Instagram @linkd.cl</li>
-        <li>Despacho nacional · Chile</li>
+        <li><a href="https://wa.me/56974850692?text=Hola%20LINKD" target="_blank" rel="noopener">WhatsApp +56 9 7485 0692</a></li>
+        <li><a href="mailto:contacto@linkd.cl">contacto@linkd.cl</a></li>
+        <li><a href="https://www.instagram.com/linkd.cl/" target="_blank" rel="noopener">Instagram @linkd.cl</a></li>
+        <li>Padre Mariano 82, Of 502 · Providencia</li>
+        <li>Lun a Vie · 8:30 a 18:00 hrs</li>
       </ul>
     </div>
   </div>
@@ -1083,7 +1285,7 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
   </div>
 </footer>
 
-<a href="https://wa.me/56961607102?text=Hola%20LINKD" target="_blank" rel="noopener" class="wa-widget" aria-label="WhatsApp LINKD">
+<a href="https://wa.me/56974850692?text=Hola%20LINKD" target="_blank" rel="noopener" class="wa-widget" aria-label="WhatsApp LINKD">
   <svg viewBox="0 0 24 24"><path d="M17.5 14c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C9.8 8.7 9.2 7.2 9 6.6c-.2-.6-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4S8 11.7 8.2 12c.2.3 2 3.1 5 4.2.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
 </a>
 
