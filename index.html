@@ -228,8 +228,9 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 /* === Productos · 3 planes === */
 .products-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; z-index: 5; }
 .products-inner { max-width: 1380px; margin: 0 auto; }
-.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; perspective: 1600px; margin-top: 50px; }
-@media (max-width: 980px) { .products-grid { grid-template-columns: 1fr; } }
+.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; perspective: 1600px; margin-top: 50px; }
+@media (max-width: 1180px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .products-grid { grid-template-columns: 1fr; } }
 
 .product-card { position: relative; padding: 0 0 34px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; transition: transform 0.55s var(--ease), border-color 0.4s, box-shadow 0.5s; transform-style: preserve-3d; display: flex; flex-direction: column; cursor: default; min-height: 620px; }
 .product-mockup { position: relative; aspect-ratio: 16/10; overflow: hidden; background: linear-gradient(160deg, var(--bg-3) 0%, var(--bg-warm) 100%); display: grid; place-items: center; padding: 24px; }
@@ -265,6 +266,31 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .product-card.featured .btn-buy { background: var(--blue); color: #fff; border-color: var(--blue); }
 .product-card.featured .btn-buy:hover { background: var(--blue-bright); border-color: var(--blue-bright); box-shadow: 0 12px 28px rgba(0,113,227,0.45); }
 
+/* === Enterprise card === */
+.product-card.enterprise { background: linear-gradient(165deg, var(--bg-card) 0%, rgba(77,227,140,0.06) 100%); border-color: rgba(77,227,140,0.32); }
+.product-card.enterprise:hover { border-color: rgba(77,227,140,0.55); box-shadow: 0 38px 80px -20px rgba(77,227,140,0.25); }
+.enterprise-tag { background: rgba(77,227,140,0.14) !important; border-color: rgba(77,227,140,0.42) !important; color: var(--signal) !important; }
+.product-card.enterprise .btn-buy { background: transparent; color: var(--signal); border-color: var(--signal); }
+.product-card.enterprise .btn-buy:hover { background: var(--signal); color: var(--bg); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(77,227,140,0.36); }
+.product-price--quote { padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px dashed var(--line); }
+.product-price--quote .quote-label { font-family: var(--f-display); font-weight: 700; font-size: 1.5rem; line-height: 1.05; color: var(--ink); letter-spacing: -0.022em; }
+
+/* Dashboard mockup · pure CSS */
+.product-mockup--dash { background: linear-gradient(160deg, var(--bg-warm) 0%, var(--bg-3) 100%); padding: 32px 26px; }
+.dash-mock { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px 14px; box-shadow: 0 14px 30px -10px rgba(0,0,0,0.45); position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; gap: 12px; }
+.dash-mock-top { display: flex; gap: 5px; }
+.dash-mock-top span { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+.dash-mock-top span:nth-child(1) { background: #FF5F57; }
+.dash-mock-top span:nth-child(2) { background: #FEBC2E; }
+.dash-mock-top span:nth-child(3) { background: var(--signal); }
+.dash-mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; flex: 1; }
+.dash-cell { background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; position: relative; overflow: hidden; min-height: 56px; }
+.dash-cell span { font-family: var(--f-mono); font-size: 8.5px; font-weight: 600; letter-spacing: 0.08em; color: var(--ink-soft); text-transform: uppercase; }
+.dash-bar { height: 4px; background: linear-gradient(90deg, var(--blue), var(--blue-bright)); border-radius: 100px; box-shadow: 0 0 8px rgba(0,113,227,0.4); }
+.dash-cell:nth-child(3) .dash-bar { background: linear-gradient(90deg, var(--signal), #80f0a8); box-shadow: 0 0 8px rgba(77,227,140,0.4); }
+.dash-pulse { position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 10px var(--signal); animation: dashPulse 1.6s infinite; }
+@keyframes dashPulse { 50% { opacity: 0.4; transform: scale(1.3); } }
+
 /* === Stand de reseñas · split section === */
 .stand-section { padding: clamp(80px, 11vh, 140px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; overflow: hidden; }
 .stand-inner { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(40px, 7vw, 80px); align-items: center; }
@@ -285,6 +311,73 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .stand-feat .ico svg { width: 16px; height: 16px; stroke-width: 1.8; }
 .stand-feat strong { display: block; font-family: var(--f-display); font-weight: 600; font-size: 0.98rem; letter-spacing: -0.005em; color: var(--ink); margin-bottom: 3px; }
 .stand-feat span { font-size: 0.85rem; line-height: 1.5; color: var(--ink-soft); }
+
+/* === Orbita · conexiones === */
+.orbita-section { padding: clamp(80px, 11vh, 140px) clamp(20px, 5vw, 60px); position: relative; z-index: 5; overflow: hidden; }
+.orbita-inner { max-width: 1280px; margin: 0 auto; text-align: center; }
+.orbita-head { max-width: 60ch; margin: 0 auto 70px; }
+.orbita-head h2 .italic { color: var(--signal); }
+
+.orbita-stage { position: relative; aspect-ratio: 1/1; max-width: 720px; margin: 0 auto; }
+@media (max-width: 720px) { .orbita-stage { aspect-ratio: 5/6; max-width: 480px; } }
+
+.orbita-core {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 30%; height: auto; aspect-ratio: 1.586/1;
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-warm) 100%);
+  border: 1.5px solid rgba(0,113,227,0.45);
+  border-radius: 14px;
+  display: grid; place-items: center;
+  box-shadow: 0 20px 50px rgba(0,113,227,0.32), 0 0 80px rgba(0,113,227,0.20);
+  z-index: 10;
+}
+.orbita-core img { width: 72%; height: auto; filter: invert(0); }
+[data-theme="light"] .orbita-core img { filter: none; }
+:root:not([data-theme]) .orbita-core img { filter: invert(1) brightness(1.05); }
+.orbita-core::after { content: ''; position: absolute; inset: -10%; border: 1px solid rgba(0,113,227,0.32); border-radius: 18px; animation: coreBreath 3s ease-in-out infinite; pointer-events: none; }
+@keyframes coreBreath { 50% { transform: scale(1.08); opacity: 0.5; } }
+
+.orbita-ring {
+  position: absolute; top: 50%; left: 50%;
+  border: 1px dashed var(--line-strong);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.orbita-ring.r1 { width: 56%; height: 56%; animation: orbitSpin 32s linear infinite; }
+.orbita-ring.r2 { width: 80%; height: 80%; animation: orbitSpin 50s linear infinite reverse; }
+.orbita-ring.r3 { width: 100%; height: 100%; animation: orbitSpin 70s linear infinite; opacity: 0.55; }
+@keyframes orbitSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+.orbita-logo {
+  position: absolute;
+  width: 56px; height: 56px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  display: grid; place-items: center;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.32);
+  transition: transform 0.4s var(--ease), border-color 0.3s, box-shadow 0.3s;
+  z-index: 5;
+}
+[data-theme="light"] .orbita-logo { box-shadow: 0 10px 26px rgba(0,0,0,0.10); }
+.orbita-logo:hover { transform: translate(-50%, -50%) scale(1.15) !important; border-color: var(--blue-bright); box-shadow: 0 20px 40px rgba(0,113,227,0.35); z-index: 20; }
+.orbita-logo img { max-width: 70%; max-height: 70%; object-fit: contain; }
+.orbita-logo .tip { position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); padding: 4px 9px; background: var(--ink); color: var(--bg); font-family: var(--f-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; border-radius: 100px; white-space: nowrap; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
+.orbita-logo:hover .tip { opacity: 1; }
+@media (max-width: 720px) { .orbita-logo { width: 44px; height: 44px; border-radius: 10px; } .orbita-logo .tip { font-size: 8px; bottom: -22px; padding: 3px 7px; } }
+@media (max-width: 480px) { .orbita-logo { width: 36px; height: 36px; border-radius: 8px; } }
+
+.orbita-cta { margin-top: 60px; display: inline-flex; flex-direction: column; align-items: center; gap: 14px; }
+.orbita-cta p { font-size: 0.95rem; color: var(--ink-soft); max-width: 50ch; }
+
+/* === Partner badges row === */
+.partner-bar { padding: clamp(40px, 6vh, 70px) clamp(20px, 5vw, 60px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); position: relative; z-index: 5; }
+.partner-inner { max-width: 1380px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(28px, 5vw, 60px); }
+.partner-eyebrow { font-family: var(--f-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-mute); }
+.partner-logos { display: flex; gap: clamp(20px, 4vw, 44px); align-items: center; flex-wrap: wrap; justify-content: center; }
+.partner-logos img { height: clamp(36px, 5vh, 52px); width: auto; transition: opacity 0.3s, filter 0.3s; opacity: 0.85; }
+.partner-logos img:hover { opacity: 1; transform: scale(1.05); }
 
 /* === Beneficios grid === */
 .benefits-section { padding: clamp(70px, 10vh, 130px) clamp(20px, 5vw, 60px); background: var(--bg-2); border-top: 1px solid var(--line); position: relative; z-index: 5; }
@@ -348,11 +441,21 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .clients-head { font-family: var(--f-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.30em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 32px; display: inline-flex; align-items: center; gap: 12px; }
 .clients-head::before, .clients-head::after { content: ''; width: 30px; height: 1px; background: var(--line-strong); }
 .clients-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.clients-track { display: flex; gap: clamp(40px, 6vw, 80px); align-items: center; animation: clientsRoll 32s linear infinite; width: max-content; }
-.clients-track img { height: 42px; width: auto; object-fit: contain; opacity: 0.78; filter: grayscale(1); transition: filter 0.4s, opacity 0.4s; flex-shrink: 0; }
-[data-theme="dark"] .clients-track img, :root:not([data-theme]) .clients-track img { filter: grayscale(1) invert(1) brightness(1.2); }
-.clients-track img:hover { opacity: 1; filter: none; }
-[data-theme="dark"] .clients-track img:hover, :root:not([data-theme]) .clients-track img:hover { filter: invert(0); }
+.clients-track { display: flex; gap: 18px; align-items: center; animation: clientsRoll 36s linear infinite; width: max-content; }
+.client-chip {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 24px;
+  height: 72px;
+  display: grid; place-items: center;
+  min-width: 140px;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+}
+.client-chip:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+.client-chip img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; display: block; }
 @keyframes clientsRoll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* === CTA === */
@@ -399,7 +502,16 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .foot-bar > span:nth-child(2) { background: var(--blue-bright); }
 .foot-bar > span:nth-child(3) { background: var(--signal); }
 .foot-bar > span:nth-child(4) { background: var(--ink); }
-.foot-bottom { max-width: 1380px; margin: 26px auto 0; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-mute); }
+
+/* Parte de Grupo Digitals */
+.foot-group { max-width: 1380px; margin: 32px auto 0; padding: 22px clamp(0, 4vw, 0); display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.foot-group .label { font-family: var(--f-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-mute); }
+.foot-group img { height: 44px; width: auto; opacity: 0.88; transition: opacity 0.3s; filter: invert(0); }
+[data-theme="light"] .foot-group img { filter: none; }
+:root:not([data-theme]) .foot-group img { filter: invert(1) brightness(1.05); }
+.foot-group img:hover { opacity: 1; }
+
+.foot-bottom { max-width: 1380px; margin: 22px auto 0; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-mute); }
 
 /* === WhatsApp === */
 .wa-widget { position: fixed; bottom: 24px; right: 24px; z-index: 90; width: 58px; height: 58px; background: #25D366; display: grid; place-items: center; border-radius: 50%; box-shadow: 0 14px 32px rgba(37,211,102,0.4); transition: transform 0.25s ease; animation: waPulse 2.4s infinite; }
@@ -430,11 +542,11 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
   <a href="#" class="brand-link" aria-label="LINKD">
     <img class="logo-dark" src="assets/logo/linkd-logo-white.png" alt="LINKD"/>
     <img class="logo-light" src="assets/logo/linkd-logo-black.png" alt="LINKD"/>
-    <span class="brand-mark">Smart Cards · NFC<br/>Chile · 2026</span>
   </a>
   <nav class="topbar-nav">
     <a href="#como">Cómo funciona</a>
     <a href="#productos">Productos</a>
+    <a href="#orbita">Integraciones</a>
     <a href="#showcase">Galería</a>
     <a href="#stand">Stand reseñas</a>
     <a href="#beneficios">Beneficios</a>
@@ -611,6 +723,37 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
         </div>
       </article>
 
+      <article class="product-card enterprise reveal-up">
+        <div class="product-mockup product-mockup--dash">
+          <div class="dash-mock">
+            <div class="dash-mock-top"><span></span><span></span><span></span></div>
+            <div class="dash-mock-grid">
+              <div class="dash-cell"><div class="dash-bar" style="width:78%"></div><span>Leads · 78%</span></div>
+              <div class="dash-cell"><div class="dash-bar" style="width:42%"></div><span>Taps · 42%</span></div>
+              <div class="dash-cell"><div class="dash-bar" style="width:91%"></div><span>CRM Sync · 91%</span></div>
+              <div class="dash-cell"><div class="dash-pulse"></div><span>API Live</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-body">
+          <span class="product-tag enterprise-tag">ENTERPRISE</span>
+          <h3>Dashboard &amp; CRM API</h3>
+          <p class="product-desc">Panel analytics + conexión a tu CRM vía API. Para equipos comerciales y marcas.</p>
+          <div class="product-price product-price--quote">
+            <span class="quote-label">Cotización<br/>a medida</span>
+          </div>
+          <ul class="product-features">
+            <li><b>Dashboard de taps + leads</b></li>
+            <li>Conexión API a tu CRM</li>
+            <li>Multi-usuario · roles + permisos</li>
+            <li>Webhooks en cada tap</li>
+            <li>Reportes ejecutivos mensuales</li>
+            <li>Onboarding técnico incluido</li>
+          </ul>
+          <a href="https://wa.me/56961607102?text=Hola%2C%20me%20interesa%20LINKD%20Enterprise%20%C2%B7%20Dashboard%20%2B%20CRM%20API" target="_blank" rel="noopener" class="btn-buy">Cotizar Enterprise →</a>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -643,6 +786,63 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
       <div class="hero-row">
         <a href="https://wa.me/56961607102?text=Hola%2C%20me%20interesa%20el%20stand%20de%20rese%C3%B1as%20LINKD" target="_blank" rel="noopener" class="btn-primary">Cotizar stand →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORBITA · CONEXIONES -->
+<section class="orbita-section" id="orbita">
+  <div class="orbita-inner">
+    <div class="orbita-head reveal-up">
+      <span class="section-eyebrow" style="margin-bottom: 14px;">Stack · 17 integraciones</span>
+      <h2 style="margin: 0 auto;">Tu LINKD <span class="italic">conecta</span><br/>con todo tu stack.</h2>
+      <p style="margin-left: auto; margin-right: auto;">CRM, calendarios, email, redes, pagos, AI — todo lo que ya usas se enlaza al perfil digital de tu tarjeta y captura el lead automáticamente cuando alguien te tapea.</p>
+    </div>
+
+    <div class="orbita-stage reveal-up">
+      <div class="orbita-ring r3"></div>
+      <div class="orbita-ring r2"></div>
+      <div class="orbita-ring r1"></div>
+
+      <div class="orbita-core">
+        <img src="assets/logo/linkd-logo-white.png" alt="LINKD core"/>
+      </div>
+
+      <!-- Logos en orbit position absoluta -->
+      <div class="orbita-logo" style="top:8%; left:50%; transform: translate(-50%, -50%);" data-tip="WhatsApp"><img src="assets/orbita/whatsapp.png" alt="WhatsApp"/><span class="tip">WhatsApp</span></div>
+      <div class="orbita-logo" style="top:18%; left:82%; transform: translate(-50%, -50%);" data-tip="LinkedIn"><img src="assets/orbita/linkedin.png" alt="LinkedIn"/><span class="tip">LinkedIn</span></div>
+      <div class="orbita-logo" style="top:50%; left:96%; transform: translate(-50%, -50%);" data-tip="Instagram"><img src="assets/orbita/instagram.png" alt="Instagram"/><span class="tip">Instagram</span></div>
+      <div class="orbita-logo" style="top:82%; left:82%; transform: translate(-50%, -50%);" data-tip="Meta Ads"><img src="assets/orbita/meta.png" alt="Meta"/><span class="tip">Meta Ads</span></div>
+      <div class="orbita-logo" style="top:92%; left:50%; transform: translate(-50%, -50%);" data-tip="Stripe"><img src="assets/orbita/stripe.png" alt="Stripe"/><span class="tip">Stripe</span></div>
+      <div class="orbita-logo" style="top:82%; left:18%; transform: translate(-50%, -50%);" data-tip="Shopify"><img src="assets/orbita/shopify.png" alt="Shopify"/><span class="tip">Shopify</span></div>
+      <div class="orbita-logo" style="top:50%; left:4%; transform: translate(-50%, -50%);" data-tip="Google Ads"><img src="assets/orbita/google-ads.png" alt="Google Ads"/><span class="tip">Google Ads</span></div>
+      <div class="orbita-logo" style="top:18%; left:18%; transform: translate(-50%, -50%);" data-tip="Facebook"><img src="assets/orbita/facebook.png" alt="Facebook"/><span class="tip">Facebook</span></div>
+
+      <!-- Ring inner -->
+      <div class="orbita-logo" style="top:24%; left:38%; transform: translate(-50%, -50%);" data-tip="ChatGPT"><img src="assets/orbita/chatgpt.png" alt="ChatGPT"/><span class="tip">ChatGPT</span></div>
+      <div class="orbita-logo" style="top:24%; left:62%; transform: translate(-50%, -50%);" data-tip="Claude"><img src="assets/orbita/claude.png" alt="Claude"/><span class="tip">Claude</span></div>
+      <div class="orbita-logo" style="top:50%; left:24%; transform: translate(-50%, -50%);" data-tip="Gmail"><img src="assets/orbita/gmail.png" alt="Gmail"/><span class="tip">Gmail</span></div>
+      <div class="orbita-logo" style="top:50%; left:76%; transform: translate(-50%, -50%);" data-tip="Outlook"><img src="assets/orbita/outlook.png" alt="Outlook"/><span class="tip">Outlook</span></div>
+      <div class="orbita-logo" style="top:76%; left:38%; transform: translate(-50%, -50%);" data-tip="Google Calendar"><img src="assets/orbita/gcalendar.png" alt="Google Calendar"/><span class="tip">G. Calendar</span></div>
+      <div class="orbita-logo" style="top:76%; left:62%; transform: translate(-50%, -50%);" data-tip="Microsoft Teams"><img src="assets/orbita/teams.png" alt="Teams"/><span class="tip">Teams</span></div>
+      <div class="orbita-logo" style="top:38%; left:50%; transform: translate(-50%, -50%);" data-tip="Gemini"><img src="assets/orbita/gemini.png" alt="Gemini"/><span class="tip">Gemini</span></div>
+      <div class="orbita-logo" style="top:62%; left:50%; transform: translate(-50%, -50%);" data-tip="ElevenLabs"><img src="assets/orbita/elevenlabs.png" alt="ElevenLabs"/><span class="tip">ElevenLabs</span></div>
+    </div>
+
+    <div class="orbita-cta reveal-up">
+      <p>Integramos sobre <strong>Hapee</strong> (nuestra plataforma GHL whitelabel) y plataformas líderes vía API.</p>
+      <a href="#productos" class="btn-primary">Ver plan Enterprise →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER BADGES -->
+<section class="partner-bar">
+  <div class="partner-inner">
+    <span class="partner-eyebrow">Partners certificados</span>
+    <div class="partner-logos">
+      <img src="assets/orbita/cert-google.webp" alt="Google Premier Partner" title="Google Premier Partner"/>
+      <img src="assets/orbita/cert-meta.webp" alt="Meta Business Partner" title="Meta Business Partner"/>
     </div>
   </div>
 </section>
@@ -789,20 +989,20 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
     <div class="clients-head">Ya confían en LINKD</div>
     <div class="clients-marquee">
       <div class="clients-track">
-        <img src="assets/hf/clients/digitals.jpg" alt="Digitals"/>
-        <img src="assets/hf/clients/cirumed.jpg" alt="Cirumed"/>
-        <img src="assets/hf/clients/khipu.jpg" alt="Khipu"/>
-        <img src="assets/hf/clients/mercosur.jpg" alt="Mercosur"/>
-        <img src="assets/hf/clients/flamamed.jpg" alt="Flamamed"/>
-        <img src="assets/hf/clients/academia.jpg" alt="Academia"/>
-        <img src="assets/hf/clients/america_travel.jpg" alt="América Travel"/>
-        <img src="assets/hf/clients/digitals.jpg" alt="Digitals"/>
-        <img src="assets/hf/clients/cirumed.jpg" alt="Cirumed"/>
-        <img src="assets/hf/clients/khipu.jpg" alt="Khipu"/>
-        <img src="assets/hf/clients/mercosur.jpg" alt="Mercosur"/>
-        <img src="assets/hf/clients/flamamed.jpg" alt="Flamamed"/>
-        <img src="assets/hf/clients/academia.jpg" alt="Academia"/>
-        <img src="assets/hf/clients/america_travel.jpg" alt="América Travel"/>
+        <div class="client-chip"><img src="assets/hf/clients/digitals.jpg" alt="Digitals"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/cirumed.jpg" alt="Cirumed"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/khipu.jpg" alt="Khipu"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/mercosur.jpg" alt="Mercosur"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/flamamed.jpg" alt="Flamamed"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/academia.jpg" alt="Academia"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/america_travel.jpg" alt="América Travel"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/digitals.jpg" alt="Digitals"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/cirumed.jpg" alt="Cirumed"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/khipu.jpg" alt="Khipu"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/mercosur.jpg" alt="Mercosur"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/flamamed.jpg" alt="Flamamed"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/academia.jpg" alt="Academia"/></div>
+        <div class="client-chip"><img src="assets/hf/clients/america_travel.jpg" alt="América Travel"/></div>
       </div>
     </div>
   </div>
@@ -873,6 +1073,10 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
     </div>
   </div>
   <div class="foot-bar"><span></span><span></span><span></span><span></span></div>
+  <div class="foot-group">
+    <span class="label">— Parte de</span>
+    <a href="https://grupodigitals.com" target="_blank" rel="noopener"><img src="assets/logo/grupo-digitals-dark.png" alt="Grupo Digitals"/></a>
+  </div>
   <div class="foot-bottom">
     <span>© 2026 LINKD · Smart Cards Chile</span>
     <span>Powered by <a href="https://digitals.cl" target="_blank" rel="noopener" style="color: var(--blue-bright);">Digitals</a></span>
