@@ -518,9 +518,9 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
         <a href="#flujo" class="btn-ghost">Ver cómo funciona</a>
       </div>
       <div class="eh-trust">
-        <div class="eh-trust-item"><div class="num">50+</div><div class="lbl">Equipos en Chile usando LINKD</div></div>
-        <div class="eh-trust-item"><div class="num">3.5×</div><div class="lbl">Contactos efectivos por evento</div></div>
-        <div class="eh-trust-item"><div class="num">85%</div><div class="lbl">Reducción costos impresión</div></div>
+        <div class="eh-trust-item"><div class="num counter" data-target="50" data-suffix="+">0</div><div class="lbl">Equipos en Chile usando LINKD</div></div>
+        <div class="eh-trust-item"><div class="num counter" data-target="3.5" data-suffix="×" data-decimals="1">0</div><div class="lbl">Contactos efectivos por evento</div></div>
+        <div class="eh-trust-item"><div class="num counter" data-target="85" data-suffix="%">0</div><div class="lbl">Reducción costos impresión</div></div>
       </div>
     </div>
 
@@ -533,10 +533,10 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
           <div class="eh-dash-time">Live · hoy</div>
         </div>
         <div class="eh-dash-grid">
-          <div class="eh-dash-kpi"><div class="lbl">Taps semana</div><div class="v">2.847<span class="pct">+18%</span></div></div>
-          <div class="eh-dash-kpi v2"><div class="lbl">Leads CRM</div><div class="v">412<span class="pct">+24%</span></div></div>
-          <div class="eh-dash-kpi v3"><div class="lbl">Tarjetas</div><div class="v">68 activas</div></div>
-          <div class="eh-dash-kpi v4"><div class="lbl">Conversión</div><div class="v">14.5%<span class="pct">+3pts</span></div></div>
+          <div class="eh-dash-kpi"><div class="lbl">Taps semana</div><div class="v"><span class="counter" data-target="2847" data-thousand="1">0</span><span class="pct">+18%</span></div></div>
+          <div class="eh-dash-kpi v2"><div class="lbl">Leads CRM</div><div class="v"><span class="counter" data-target="412">0</span><span class="pct">+24%</span></div></div>
+          <div class="eh-dash-kpi v3"><div class="lbl">Tarjetas</div><div class="v"><span class="counter" data-target="68">0</span> activas</div></div>
+          <div class="eh-dash-kpi v4"><div class="lbl">Conversión</div><div class="v"><span class="counter" data-target="14.5" data-decimals="1" data-suffix="%">0</span><span class="pct">+3pts</span></div></div>
         </div>
         <div class="eh-dash-chart" aria-hidden="true">
           <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
@@ -792,9 +792,9 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
         <h2>Khipu activó networking <span class="italic">NFC</span> en un evento de <span class="em">1.000+ personas</span>.</h2>
         <p class="cs-lede">Junto a Grupo Digitals elevamos la experiencia de networking en un evento masivo de la fintech chilena Khipu, implementando una activación basada en <strong>dispositivos NFC y tarjetas inteligentes LINKD</strong> — conexiones profesionales fluidas, modernas y de alto valor en tiempo real.</p>
         <div class="cs-stats">
-          <div class="cs-stat"><div class="num">1.000+</div><div class="lbl">asistentes activados</div></div>
-          <div class="cs-stat"><div class="num">100%</div><div class="lbl">conexiones digitales</div></div>
-          <div class="cs-stat"><div class="num">0</div><div class="lbl">papel impreso</div></div>
+          <div class="cs-stat"><div class="num counter" data-target="1000" data-thousand="1" data-suffix="+">0</div><div class="lbl">asistentes activados</div></div>
+          <div class="cs-stat"><div class="num counter" data-target="100" data-suffix="%">0</div><div class="lbl">conexiones digitales</div></div>
+          <div class="cs-stat"><div class="num counter" data-target="0">0</div><div class="lbl">papel impreso</div></div>
         </div>
         <div class="cs-quote">
           <p>"LINKD nos permitió convertir cada saludo en un dato útil. El evento dejó de ser solo networking visual y pasó a ser pipeline real."</p>
@@ -924,6 +924,43 @@ if (themeBtn) {
     if (isLight) { document.documentElement.removeAttribute('data-theme'); try { localStorage.setItem('linkd-theme', 'dark'); } catch(e){} }
     else { document.documentElement.setAttribute('data-theme', 'light'); try { localStorage.setItem('linkd-theme', 'light'); } catch(e){} }
   });
+}
+
+// === COUNTER animation · cuenta desde 0 hasta el data-target con easing ===
+function animateCounter(el) {
+  if (el.dataset.done === '1') return;
+  el.dataset.done = '1';
+  const target = parseFloat(el.dataset.target) || 0;
+  const decimals = parseInt(el.dataset.decimals || 0);
+  const suffix = el.dataset.suffix || '';
+  const useThousand = el.dataset.thousand === '1';
+  const duration = 1800;
+  const start = performance.now();
+  function format(n) {
+    let s = decimals > 0 ? n.toFixed(decimals).replace('.', ',') : Math.round(n).toString();
+    if (useThousand && decimals === 0) s = Math.round(n).toLocaleString('es-CL');
+    return s + suffix;
+  }
+  function tick(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+    el.textContent = format(target * eased);
+    if (t < 1) requestAnimationFrame(tick);
+    else el.textContent = format(target);
+  }
+  requestAnimationFrame(tick);
+}
+
+const counters = document.querySelectorAll('.counter');
+if (counters.length) {
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+    counters.forEach(c => io.observe(c));
+  } else {
+    counters.forEach(c => animateCounter(c));
+  }
 }
 
 // ROI Calculator
