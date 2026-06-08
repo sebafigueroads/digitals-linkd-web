@@ -846,16 +846,20 @@ body, .topbar, .product-card, .benefit-card, .stat-card, .step-card, section, .c
 .foot-bar > span:nth-child(3) { background: var(--signal); }
 .foot-bar > span:nth-child(4) { background: var(--ink); }
 
-/* Parte de Grupo Digitals · grande y con variant dark/light */
-.foot-group { max-width: 1380px; margin: 44px auto 0; padding: 28px 0 0; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; }
+/* Parte de Grupo Digitals · wordmark CSS (no PNG · nunca se corta) */
+.foot-group { max-width: 1380px; margin: 44px auto 0; padding: 32px 0 8px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: center; gap: 26px; flex-wrap: wrap; }
 .foot-group .label { font-family: var(--f-body); font-size: 14px; font-weight: 500; letter-spacing: 0.02em; color: var(--ink-soft); }
-.foot-group a { display: inline-flex; align-items: center; transition: opacity 0.3s, transform 0.3s; }
-.foot-group a:hover { opacity: 0.85; transform: scale(1.03); }
-.foot-group .gd-dark { display: block; height: 88px; width: auto; }
-.foot-group .gd-light { display: none; height: 88px; width: auto; }
-[data-theme="light"] .foot-group .gd-dark { display: none; }
-[data-theme="light"] .foot-group .gd-light { display: block; }
-@media (max-width: 600px) { .foot-group .gd-dark, .foot-group .gd-light { height: 68px; } .foot-group .label { font-size: 13px; } }
+.gd-lockup { display: inline-flex; flex-direction: column; line-height: 0.86; letter-spacing: -0.025em; font-family: 'Inter Tight', system-ui, sans-serif; color: var(--ink); transition: opacity 0.3s, transform 0.3s; }
+.gd-lockup:hover { opacity: 0.88; transform: scale(1.03); }
+.gd-lockup .gd-grupo { font-weight: 500; font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.018em; padding-left: 0.04em; }
+.gd-lockup .gd-digitals { font-weight: 800; font-size: clamp(52px, 5.5vw, 72px); letter-spacing: -0.035em; display: inline-flex; align-items: flex-end; gap: 0.04em; }
+.gd-lockup .gd-dot { display: inline-block; width: 0.16em; height: 0.16em; border-radius: 50%; background: #C8FF3E; margin-bottom: 0.13em; box-shadow: 0 0 0.4em rgba(200,255,62,0.45); }
+@media (max-width: 600px) {
+  .foot-group { gap: 18px; }
+  .foot-group .label { font-size: 13px; }
+  .gd-lockup .gd-grupo { font-size: 22px; }
+  .gd-lockup .gd-digitals { font-size: 46px; }
+}
 
 .foot-bottom { max-width: 1380px; margin: 22px auto 0; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--f-body); font-size: 12.5px; font-weight: 500; letter-spacing: 0.01em; color: var(--ink-mute); }
 
@@ -1705,9 +1709,9 @@ img, video, svg { max-width: 100%; height: auto; }
   <div class="foot-bar"><span></span><span></span><span></span><span></span></div>
   <div class="foot-group">
     <span class="label">— Parte de</span>
-    <a href="https://grupodigitals.com" target="_blank" rel="noopener" aria-label="Grupo Digitals">
-      <img class="gd-dark" src="assets/logo/grupo-digitals-white.png" alt="Grupo Digitals"/>
-      <img class="gd-light" src="assets/logo/grupo-digitals-black.png" alt="Grupo Digitals"/>
+    <a href="https://grupodigitals.com" target="_blank" rel="noopener" class="gd-lockup" aria-label="Grupo Digitals">
+      <span class="gd-grupo">Grupo</span>
+      <span class="gd-digitals">Digitals<span class="gd-dot" aria-hidden="true"></span></span>
     </a>
   </div>
   <div class="foot-bottom">
